@@ -38,14 +38,13 @@ export default function RecipeDetail() {
   return (
     <div className="flex h-full flex-col">
       <div className="flex-none px-4 pb-3 pt-1 flex flex-col gap-2 border-b border-[#edeae1]">
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center justify-between gap-2.5">
           <button
             onClick={() => navigate(-1)}
             className="h-11 w-11 flex-none rounded-2xl bg-[#f4f2ec] text-[17px] text-[#1c1b18]"
           >
             ‹
           </button>
-          <h1 className="min-w-0 flex-1 truncate text-[15px] font-semibold text-[#1c1b18]">{recipe.name}</h1>
           <div className="flex flex-none gap-0.5 rounded-xl bg-[#f4f2ec] p-[3px]">
             {SERVING_OPTIONS.map((n) => (
               <button
@@ -60,7 +59,8 @@ export default function RecipeDetail() {
             ))}
           </div>
         </div>
-        <div className="pl-[54px] text-xs text-[#8b877c]">
+        <h1 className="line-clamp-2 text-[17px] font-semibold leading-snug text-[#1c1b18]">{recipe.name}</h1>
+        <div className="text-xs text-[#8b877c]">
           Cook {formatDuration(recipe.cookTime)} · Total {formatDuration(recipe.totalTime)}
         </div>
       </div>

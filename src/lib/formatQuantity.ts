@@ -55,8 +55,12 @@ export function formatQuantity(baseQuantity: number, bucket: UnitBucket, unit: s
     return `${prettifyFractionString(fractionToString(toFraction(baseQuantity)))} oz`
   }
 
-  // count: pluralize simple unit labels
+  // count: pluralize meaningful unit labels; the generic "item" placeholder
+  // unit is dropped entirely since the ingredient name already follows it
+  // in the UI (e.g. "1 avocado", not "1 item avocado").
   const rounded = Math.round(baseQuantity * 100) / 100
+  const qtyStr = prettifyFractionString(fractionToString(toFraction(rounded)))
+  if (unit === 'item') return qtyStr
   const label = rounded === 1 ? unit : `${unit}${unit.endsWith('s') ? '' : 's'}`
-  return `${prettifyFractionString(fractionToString(toFraction(rounded)))} ${label}`
+  return `${qtyStr} ${label}`
 }

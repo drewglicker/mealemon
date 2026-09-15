@@ -41,11 +41,26 @@ export default function Groceries() {
   const total = items?.length ?? 0
   const remaining = items?.filter((i) => !i.isChecked).length ?? 0
 
-  if (planData === undefined || items === undefined) {
+  if (planData === undefined) {
     return <p className="p-6 text-center text-sm text-[#9a968a]">Loading…</p>
   }
 
-  if (!mealPlanId || items.length === 0) {
+  // No active plan yet, or one exists but its items query is still loading.
+  if (!mealPlanId) {
+    return (
+      <div className="flex flex-col items-center gap-2 p-6 py-16 text-center">
+        <p className="text-sm text-[#9a968a]">
+          No grocery items yet. Add recipes to your meal plan, then tap "Add to Groceries".
+        </p>
+      </div>
+    )
+  }
+
+  if (items === undefined) {
+    return <p className="p-6 text-center text-sm text-[#9a968a]">Loading…</p>
+  }
+
+  if (items.length === 0) {
     return (
       <div className="flex flex-col items-center gap-2 p-6 py-16 text-center">
         <p className="text-sm text-[#9a968a]">
