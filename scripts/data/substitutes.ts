@@ -230,24 +230,40 @@ export const SUBSTITUTES: SubstituteEntry[] = [
     { name: 'garlic powder', ratio: '1/8 tsp per small clove' },
     { name: 'jarred minced garlic', ratio: '1/2 tsp per clove' },
   ] },
+  { match: ['shallot'], substitutes: [{ name: 'red onion or scallion whites' }] },
+  { match: ['scallion', 'green onion'], substitutes: [{ name: 'chives or finely diced onion' }] },
   { match: ['onion'], substitutes: [
     { name: 'shallot' },
     { name: 'onion powder', ratio: '1 tsp per small onion' },
   ] },
-  { match: ['shallot'], substitutes: [{ name: 'red onion or scallion whites' }] },
-  { match: ['scallion', 'green onion'], substitutes: [{ name: 'chives or finely diced onion' }] },
   { match: ['lemon'], substitutes: [{ name: 'lime juice or vinegar', ratio: '1/2 tsp vinegar per 1 tsp lemon juice' }] },
   { match: ['lime'], substitutes: [{ name: 'lemon juice', ratio: '1:1' }] },
 ]
 
 /** Finds substitute suggestions for a canonical ingredient name via simple
- * substring matching (case-insensitive). Returns [] if nothing matches. */
+ * substring matching (case-insensitive). Returns [] if nothing matches.
+ * Guards against false positives on compound products (e.g. "chili-garlic
+ * sauce" incorrectly matching the plain "garlic" rule) by requiring that if
+ * the name looks like a prepared product (contains "sauce", "dressing",
+ * etc.), the matching entry must itself be specifically about that product. */
+const COMPOUND_PRODUCT_WORDS = ['sauce', 'dressing', 'marinade', 'paste', 'seasoning', 'mix', 'glaze', 'broth', 'stock', 'soup']
+
 export function findSubstitutes(canonicalName: string) {
   const name = canonicalName.toLowerCase()
+  const looksLikeCompoundProduct = COMPOUND_PRODUCT_WORDS.some((w) => name.includes(w))
+
   for (const entry of SUBSTITUTES) {
-    if (entry.match.some((m) => name.includes(m))) {
-      return entry.substitutes
+    const matched = entry.match.some((m) => name.includes(m))
+    if (!matched) continue
+
+    if (looksLikeCompoundProduct) {
+      // Only accept this entry if it's itself about a compound product
+      // (its own match tokens mention one of the same product words).
+      const entryIsCompoundAware = entry.match.some((m) => COMPOUND_PRODUCT_WORDS.some((w) => m.includes(w)))
+      if (!entryIsCompoundAware) continue
     }
+
+    return entry.substitutes
   }
   return []
 }
