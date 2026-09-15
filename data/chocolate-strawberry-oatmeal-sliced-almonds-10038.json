@@ -1,0 +1,31 @@
+{
+  "source_url": "https://www.mealime.com/recipes/chocolate-strawberry-oatmeal-sliced-almonds/10038",
+  "recipe_id": "10038",
+  "name": "Chocolate-Strawberry Oatmeal with Sliced Almonds",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "16 fl oz almond milk, unsweetened",
+    "1 cup almonds, sliced",
+    "½ (16 oz) pkg strawberries",
+    "cocoa powder",
+    "oats, quick cooking",
+    "pure maple syrup",
+    "salt"
+  ],
+  "instructions": [
+    "Place salt and water in a medium saucepan, cover, and bring to a boil over high heat.",
+    "Once boiling, add oats, cocoa powder, and maple syrup; whisk to combine. Cover and let simmer, on low, 3-5 minutes, or until oats reach desired consistency. ",
+    "Meanwhile, wash, trim, and thinly slice strawberries.",
+    "To serve, divide oats between bowls and top with strawberries, almonds, and milk. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/1169/presentation_8fe04f64-673d-4261-a27a-cc0d440a7092.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "chocolate-strawberry-oatmeal-sliced-almonds"
+}

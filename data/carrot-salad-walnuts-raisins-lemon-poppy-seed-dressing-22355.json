@@ -1,0 +1,33 @@
+{
+  "source_url": "https://www.mealime.com/recipes/carrot-salad-walnuts-raisins-lemon-poppy-seed-dressing/22355",
+  "recipe_id": "22355",
+  "name": "Carrot Salad with Walnuts, Raisins & Lemon-Poppy Seed Dressing",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT8M",
+  "total_time": "PT8M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 lemon",
+    "½ cup raisins",
+    "1 (10 oz) bag shredded carrots",
+    "1 cup walnuts",
+    "black pepper",
+    "extra virgin olive oil",
+    "poppy seeds",
+    "pure maple syrup",
+    "salt"
+  ],
+  "instructions": [
+    "Wash, dry, and juice lemon into a medium bowl.",
+    "Add oil, maple syrup, poppy seeds, salt, and pepper to the bowl with the lemon juice. Whisk to combine the dressing.",
+    "Roughly chop walnuts. Add to the bowl with the dressing along with the raisins and carrots; stir to combine the salad.",
+    "To serve, divide salad between bowls and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/2535/presentation_e9f35924-8e89-4ff0-bd4a-d3526acda6f3.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "carrot-salad-walnuts-raisins-lemon-poppy-seed-dressing"
+}

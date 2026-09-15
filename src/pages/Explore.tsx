@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useQuery, useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import { Link } from 'react-router-dom'
@@ -6,13 +6,71 @@ import type { Id } from '../../convex/_generated/dataModel'
 import { dietaryTagTone } from '../lib/departmentTheme'
 
 const FILTERS = ['All', 'Vegetarian', 'Gluten-Free', 'Low Carb', 'Dairy-Free']
+const PAGE_SIZE = 10
 
 export default function Explore() {
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('All')
 
-  const activeTags = filter === 'All' ? [] : [filter]
-  const recipes = useQuery(api.recipes.list, { search, dietaryFlags: activeTags })
+  const activeTags = useMemo(() => (filter === 'All' ? [] : [filter]), [filter])
+
+  // A fresh random seed + reset offset whenever the search/filter changes,
+  // so each new query gets its own random order starting from the top.
+  const [seed, setSeed] = useState(() => Math.floor(Math.random() * 1e9))
+  const [offset, setOffset] = useState(0)
+  const [items, setItems] = useState<any[]>([])
+  const seenIds = useRef(new Set<string>())
+
+  useEffect(() => {
+    setSeed(Math.floor(Math.random() * 1e9))
+    setOffset(0)
+    setItems([])
+    seenIds.current = new Set()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search, filter])
+
+  const page = useQuery(api.recipes.list, {
+    search,
+    dietaryFlags: activeTags,
+    seed,
+    offset,
+    limit: PAGE_SIZE,
+  })
+
+  useEffect(() => {
+    if (!page) return
+    setItems((prev) => {
+      const next = [...prev]
+      for (const r of page.items) {
+        if (!seenIds.current.has(r._id)) {
+          seenIds.current.add(r._id)
+          next.push(r)
+        }
+      }
+      return next
+    })
+  }, [page])
+
+  const hasMore = page?.hasMore ?? false
+  const isLoadingFirstPage = page === undefined && items.length === 0
+
+  const sentinelRef = useRef<HTMLDivElement | null>(null)
+  useEffect(() => {
+    const node = sentinelRef.current
+    if (!node) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasMore && page !== undefined) {
+          setOffset((prev) => prev + PAGE_SIZE)
+        }
+      },
+      { rootMargin: '400px' },
+    )
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [hasMore, page])
+
+  const recipes = items
   const addToPlan = useMutation(api.mealPlans.addRecipeToPlan)
   const [added, setAdded] = useState<Record<string, boolean>>({})
 
@@ -58,13 +116,13 @@ export default function Explore() {
         </div>
       </div>
 
-      {recipes === undefined && <p className="px-5 py-8 text-center text-sm text-[#9a968a]">Loading recipes…</p>}
-      {recipes && recipes.length === 0 && (
+      {isLoadingFirstPage && <p className="px-5 py-8 text-center text-sm text-[#9a968a]">Loading recipes…</p>}
+      {!isLoadingFirstPage && recipes.length === 0 && (
         <p className="px-5 py-8 text-center text-sm text-[#9a968a]">No recipes match your filters.</p>
       )}
 
       <div className="flex flex-col gap-[22px] px-5">
-        {recipes?.map((recipe) => {
+        {recipes.map((recipe) => {
           const isAdded = !!added[recipe._id]
           return (
             <div key={recipe._id} className="flex flex-col gap-3">
@@ -112,6 +170,12 @@ export default function Explore() {
           )
         })}
       </div>
+
+      {recipes.length > 0 && (
+        <div ref={sentinelRef} className="flex h-10 items-center justify-center">
+          {hasMore && <span className="text-xs text-[#9a968a]">Loading more…</span>}
+        </div>
+      )}
     </div>
   )
 }

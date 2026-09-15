@@ -1,0 +1,32 @@
+{
+  "source_url": "https://www.mealime.com/recipes/caprese-salad-fresh-mozzarella-tomatoes-basil-balsamic/22535",
+  "recipe_id": "22535",
+  "name": "Caprese Salad with Fresh Mozzarella, Tomatoes, Basil & Balsamic",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "½ small pkg fresh basil",
+    "1 (8 oz) pkg fresh mozzarella cheese",
+    "2 pints grape tomatoes",
+    "balsamic vinegar",
+    "black pepper",
+    "extra virgin olive oil",
+    "salt"
+  ],
+  "instructions": [
+    "Place oil, vinegar, salt, and pepper in a medium bowl. Whisk to combine the dressing.",
+    "Medium dice cheese. Add to the bowl with the dressing.",
+    "Wash, dry, and halve tomatoes. Add to the bowl.",
+    "Wash, dry, and pick basil leaves off the stems; roll up crosswise and thinly slice into ribbons. Add to the bowl, then stir to combine the salad.",
+    "To serve, divide salad between plates or bowls. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/2552/presentation_9affd8df-a087-498d-932b-1d054bfdaa24.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "caprese-salad-fresh-mozzarella-tomatoes-basil-balsamic"
+}

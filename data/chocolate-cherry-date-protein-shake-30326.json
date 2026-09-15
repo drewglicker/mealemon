@@ -1,0 +1,31 @@
+{
+  "source_url": "https://www.mealime.com/recipes/chocolate-cherry-date-protein-shake/30326",
+  "recipe_id": "30326",
+  "name": "Chocolate, Cherry & Date Protein Shake",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT7M",
+  "total_time": "PT7M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 cup frozen cherries",
+    "½ cup medjool dates, pitted",
+    "16 fl oz whole milk",
+    "cinnamon, ground",
+    "cocoa powder",
+    "salt",
+    "vanilla extract",
+    "vanilla whey-based protein powder (containing 20 grams protein/serving)"
+  ],
+  "instructions": [
+    "Not all protein powders are created equal. If desired, adjust shake consistency by adding more or less liquid per package instructions. This recipe will make about 8 cups of shake. Work in batches to best fit your blender.",
+    "Place milk, water, protein powder, cherries, dates, cocoa powder, vanilla, cinnamon, and salt in a blender. Blend on high speed for several minutes until smooth.",
+    "To serve, divide shake between glasses, adding ice if desired. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/3379/presentation_f8e952b8-bc60-4b78-a476-95c4bfe3cdaf.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "chocolate-cherry-date-protein-shake"
+}

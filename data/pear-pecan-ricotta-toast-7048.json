@@ -1,0 +1,30 @@
+{
+  "source_url": "https://www.mealime.com/recipes/pear-pecan-ricotta-toast/7048",
+  "recipe_id": "7048",
+  "name": "Pear & Pecan Ricotta Toast",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT5M",
+  "total_time": "PT5M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 pears",
+    "¼ cup pecan halves",
+    "½ (15 oz) pkg ricotta cheese",
+    "4 slices whole grain bread",
+    "cinnamon, ground",
+    "honey"
+  ],
+  "instructions": [
+    "Wash, dry, and thinly slice the pears.",
+    "Toast bread.",
+    "While the bread toasts, roughly chop the pecans.",
+    "To serve, spread the ricotta onto the bread, drizzle with honey, and top with pear, pecans, and a sprinkle of cinnamon."
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/803/presentation_5f008f43-da36-4070-b817-e1859a7d4558.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "pear-pecan-ricotta-toast"
+}

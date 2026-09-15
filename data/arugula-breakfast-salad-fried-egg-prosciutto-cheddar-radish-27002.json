@@ -1,0 +1,38 @@
+{
+  "source_url": "https://www.mealime.com/recipes/arugula-breakfast-salad-fried-egg-prosciutto-cheddar-radish/27002",
+  "recipe_id": "27002",
+  "name": "Arugula Breakfast Salad with Fried Egg, Prosciutto, Cheddar & Radish",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 (5 oz) pkg baby arugula",
+    "½ (8 oz) block cheddar cheese",
+    "4 eggs",
+    "8 slices prosciutto",
+    "1 bunch radish",
+    "black pepper",
+    "extra virgin olive oil",
+    "garlic powder",
+    "salt",
+    "white wine vinegar"
+  ],
+  "instructions": [
+    "Place oil, vinegar, and spices in a medium bowl. Whisk to combine the dressing and set aside.",
+    "Preheat a skillet over medium-high heat.",
+    "Once the skillet is hot, add oil and swirl to coat the bottom. Gently crack eggs into the skillet and cook until the tops of the whites are set but the yolks are still runny, about 4 minutes. Remove from heat and season with salt and pepper.",
+    "Meanwhile, wash, dry, trim, and thinly slice radishes. Add to the bowl with the dressing.",
+    "Wash and dry arugula (skip if it came pre-washed). Add to the bowl.",
+    "Small dice cheese and add to the bowl. Toss to combine the salad.",
+    "Chop or tear prosciutto into bite-sized pieces.",
+    "To serve, divide salad between plates or bowls; top with prosciutto and eggs. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe_variant/thumbnail/27002/presentation_f9aa64c4-fdda-42b4-9dab-56db1e2311a1.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "arugula-breakfast-salad-fried-egg-prosciutto-cheddar-radish"
+}

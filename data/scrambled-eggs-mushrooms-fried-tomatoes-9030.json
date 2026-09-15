@@ -1,0 +1,39 @@
+{
+  "source_url": "https://www.mealime.com/recipes/scrambled-eggs-mushrooms-fried-tomatoes/9030",
+  "recipe_id": "9030",
+  "name": "Scrambled Eggs with Mushrooms & Fried Tomatoes",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 lb cremini mushrooms",
+    "10 eggs",
+    "2 cloves garlic",
+    "4 tomatoes",
+    "black pepper",
+    "extra virgin olive oil",
+    "salt",
+    "thyme, dried"
+  ],
+  "instructions": [
+    "Wash and dry the fresh produce.",
+    "Slice mushrooms. Cut tomatoes in half.",
+    "Preheat a large nonstick skillet over medium-high heat.",
+    "Peel and mince garlic.",
+    "Once the skillet is hot, add oil and swirl to coat the bottom.",
+    "Add mushrooms, garlic, and thyme to the skillet. Cook, stirring occasionally, until mushrooms are tender, 3-4 minutes.",
+    "Meanwhile, crack eggs into a medium bowl and season with salt and pepper; whisk to combine.",
+    "Push mushrooms to the edge of the skillet and add tomatoes, cut-side down. Cook, undisturbed, until tomatoes are browned, about 3 minutes. Transfer mushrooms and tomatoes to a plate and cover with aluminum foil. ",
+    "Return the skillet to the stove over medium heat; once hot, add oil and swirl to coat the bottom.",
+    "Pour the egg mixture into the skillet. Scramble the eggs using a combination of stirring and flipping, making sure to bring in all the mixture from the edges of the pan. Cook until the eggs are no longer runny.",
+    "To serve, divide the scrambled eggs, mushrooms, and tomatoes between plates. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/1039/presentation_b2891e82-583a-4714-a126-a485a2958b75.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "scrambled-eggs-mushrooms-fried-tomatoes"
+}

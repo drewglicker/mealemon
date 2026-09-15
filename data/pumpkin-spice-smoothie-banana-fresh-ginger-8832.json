@@ -1,0 +1,35 @@
+{
+  "source_url": "https://www.mealime.com/recipes/pumpkin-spice-smoothie-banana-fresh-ginger/8832",
+  "recipe_id": "8832",
+  "name": "Pumpkin Spice Smoothie with Banana & Fresh Ginger",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT6M",
+  "total_time": "PT6M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 bananas",
+    "2 (1 inch) pieces ginger root",
+    "2 (15 oz) cans pure pumpkin purée",
+    "24 fl oz whole milk",
+    "cardamom, ground",
+    "cinnamon, ground",
+    "cloves, ground",
+    "nutmeg, ground",
+    "pure maple syrup"
+  ],
+  "instructions": [
+    "This recipe will make about 8 cups. Work in batches to best fit your blender.",
+    "Wash, dry, peel, and mince ginger; place in a blender.",
+    "Peel the bananas, break into chunks, and add to the blender. ",
+    "Add pumpkin purée, milk, maple syrup, spices, and 8 ice cubes to the blender. ",
+    "Blend on high speed for several minutes until smooth.",
+    "Pour the smoothie into glasses. Top with a sprinkle of cinnamon and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/1019/presentation_e8b90b94-932f-4f01-9e51-8a906090ec36.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "pumpkin-spice-smoothie-banana-fresh-ginger"
+}

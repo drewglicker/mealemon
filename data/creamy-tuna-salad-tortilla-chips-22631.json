@@ -1,0 +1,36 @@
+{
+  "source_url": "https://www.mealime.com/recipes/creamy-tuna-salad-tortilla-chips/22631",
+  "recipe_id": "22631",
+  "name": "Creamy Tuna Salad with Tortilla Chips",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 tbsp capers",
+    "1 stick celery",
+    "2 (6 oz) cans chunk light tuna in water",
+    "¼ cup plain Greek yogurt",
+    "½ shallot",
+    "4 oz tortilla chips",
+    "black pepper",
+    "dill, dried",
+    "garlic powder",
+    "mayonnaise",
+    "salt"
+  ],
+  "instructions": [
+    "Drain and mince capers. Place in a medium bowl along with yogurt, mayo, and spices. Stir to combine the dressing.",
+    "Peel and mince shallot. Add to the bowl with the dressing.",
+    "Wash, dry, trim, and small dice celery. Add to the bowl.",
+    "Drain tuna, add to the bowl, and flake with a fork. Stir to combine the tuna salad.",
+    "Divide tuna salad between plates and serve with chips. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/2561/presentation_4bab2b33-d0c0-493b-a10d-ac19dd76c78d.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "creamy-tuna-salad-tortilla-chips"
+}

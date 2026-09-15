@@ -1,0 +1,39 @@
+{
+  "source_url": "https://www.mealime.com/recipes/mashed-peas-on-toast-fresh-tomato-gf/8306",
+  "recipe_id": "8306",
+  "name": "Mashed Peas on Toast with Fresh Tomato",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT17M",
+  "total_time": "PT17M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 cups frozen peas",
+    "2 cloves garlic",
+    "4 slices gluten-free bread",
+    "1 lemon",
+    "2 shallots",
+    "2 tomatoes",
+    "black pepper",
+    "extra virgin olive oil",
+    "salt",
+    "vegan mayonnaise"
+  ],
+  "instructions": [
+    "Peel and mince shallots and garlic.",
+    "Preheat a skillet over medium heat.",
+    "Add oil and swirl to coat the bottom of the skillet; add shallots and garlic. Cook, stirring occasionally, until softened, about 2 minutes.",
+    "Add peas and water to pan; cook until almost no liquid remains, about 5 minutes.",
+    "Wash and juice lemon into a medium bowl.",
+    "Add pea mixture and mayonnaise to the bowl with the lemon juice; season with salt and pepper. Using a potato masher, mash until almost smooth.",
+    "Toast bread if desired.",
+    "Wash and slice tomato.",
+    "To serve, spread mashed peas over toast, top with tomato, salt, and pepper. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe_variant/thumbnail/8306/presentation_67348542-3bf5-41f2-8f4d-e4cd22df6f8e.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "mashed-peas-on-toast-fresh-tomato-gf"
+}

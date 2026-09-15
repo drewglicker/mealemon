@@ -1,0 +1,34 @@
+{
+  "source_url": "https://www.mealime.com/recipes/sunrise-omelet-feta-dill/8895",
+  "recipe_id": "8895",
+  "name": "Sunrise Omelet with Feta & Dill",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT20M",
+  "total_time": "PT20M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 (4 oz) pkg crumbled feta cheese",
+    "12 eggs",
+    "1 small bunch fresh dill",
+    "black pepper",
+    "butter, unsalted",
+    "salt"
+  ],
+  "instructions": [
+    "Wash and shave the dill leaves off the stems; discard the stems and mince the leaves. Reserve a small amount for garnish.",
+    "Preheat a nonstick skillet over medium-high heat.",
+    "In a medium bowl, whisk together eggs, salt, and pepper.",
+    "Once the skillet is hot, add butter and swirl to coat the bottom.",
+    "Add ½ of the eggs to the skillet and swirl to cover the bottom. As eggs begin to set, use a spatula to pull the cooked edges towards the center of the pan. Then tilt the pan, allowing the uncooked egg to move to the edges. Cook until just set, pressing the eggs into a smooth layer on the bottom of the skillet.",
+    "Sprinkle the cheese and ½ of the dill over one side of the omelet. Fold the omelet in half and cook until warmed through, about 1 minute. ",
+    "Add more butter to the skillet and repeat with remaining egg mixture, cheese, and dill.",
+    "To serve, cut omelets in half and divide between plates; garnish with reserved dill and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/1024/presentation_f63634f6-667b-4524-bad5-deae6d4bf6d1.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "sunrise-omelet-feta-dill"
+}

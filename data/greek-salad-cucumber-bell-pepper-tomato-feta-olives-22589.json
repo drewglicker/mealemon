@@ -1,0 +1,39 @@
+{
+  "source_url": "https://www.mealime.com/recipes/greek-salad-cucumber-bell-pepper-tomato-feta-olives/22589",
+  "recipe_id": "22589",
+  "name": "Greek Salad with Cucumber, Bell Pepper, Tomato, Feta & Olives",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 (4 oz) pkg crumbled feta cheese",
+    "1 English cucumber",
+    "1 green bell pepper",
+    "½ cup Kalamata olives, pitted",
+    "1 shallot",
+    "2 tomatoes",
+    "black pepper",
+    "extra virgin olive oil",
+    "oregano, dried",
+    "red wine vinegar",
+    "salt"
+  ],
+  "instructions": [
+    "Place oil, vinegar, and spices in a medium bowl. Whisk to combine the dressing.",
+    "Peel, halve, and slice shallot crosswise into thin half moons. Add to the bowl with the dressing and stir to coat. Set aside.",
+    "Wash and dry the fresh produce.",
+    "Large dice tomatoes. Add to the bowl with the dressing and shallot.",
+    "Trim, seed, and large dice bell pepper. Add to the bowl.",
+    "Trim and large dice cucumber. Add to the bowl.",
+    "Halve olives lengthwise. Add to the bowl, along with the feta, and stir to combine the salad.",
+    "To serve, divide salad between bowls and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/2557/presentation_ce924fb8-4c33-47cd-8ef0-66a75d604d0f.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "greek-salad-cucumber-bell-pepper-tomato-feta-olives"
+}

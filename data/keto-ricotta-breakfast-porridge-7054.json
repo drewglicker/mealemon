@@ -1,0 +1,31 @@
+{
+  "source_url": "https://www.mealime.com/recipes/keto-ricotta-breakfast-porridge/7054",
+  "recipe_id": "7054",
+  "name": "Keto Ricotta Breakfast Porridge",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT10M",
+  "total_time": "PT10M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "4 fl oz heavy whipping cream",
+    "¼ cup pecan halves",
+    "1 (15 oz) pkg ricotta cheese",
+    "butter, unsalted",
+    "cinnamon, ground"
+  ],
+  "instructions": [
+    "Heat a medium saucepan over medium heat.",
+    "Melt butter in the saucepan.",
+    "Add cinnamon and cream and cook, stirring occasionally, until cream is warm.",
+    "Remove from heat and stir in ricotta cheese.",
+    "Roughly chop pecans.",
+    "To serve, transfer to a bowl and sprinkle with cinnamon and pecans."
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/804/presentation_a398f3ea-2124-4a3b-8a82-a7c84ab81b82.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "keto-ricotta-breakfast-porridge"
+}

@@ -26,3 +26,10 @@ dist-ssr
 # Convex (generated after `npx convex dev`)
 .env.local
 Mealemon mobile design system.zip
+.vercel
+.env*
+
+# Scrape/seed run artifacts (not source)
+scripts/.scrape_progress.json
+scripts/.scrape_log.txt
+scripts/.seed_log.txt

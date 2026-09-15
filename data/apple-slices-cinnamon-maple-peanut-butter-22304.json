@@ -1,0 +1,27 @@
+{
+  "source_url": "https://www.mealime.com/recipes/apple-slices-cinnamon-maple-peanut-butter/22304",
+  "recipe_id": "22304",
+  "name": "Apple Slices with Cinnamon-Maple Peanut Butter",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT10M",
+  "total_time": "PT10M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "4 Gala apples",
+    "cinnamon, ground",
+    "natural peanut butter",
+    "pure maple syrup"
+  ],
+  "instructions": [
+    "Place peanut butter, maple syrup, and cinnamon in a small bowl. Mash and combine with the back of a spoon until smooth. Set aside.",
+    "Wash, dry, quarter, and core apples; slice into wedges.",
+    "Divide apples between plates. Serve with cinnamon-maple peanut butter for dipping. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe_variant/thumbnail/22304/presentation_e5ef04a3-17cd-4e88-a72a-0dc129c9f10e.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "apple-slices-cinnamon-maple-peanut-butter"
+}

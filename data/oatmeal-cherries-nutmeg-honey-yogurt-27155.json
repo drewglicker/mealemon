@@ -1,0 +1,33 @@
+{
+  "source_url": "https://www.mealime.com/recipes/oatmeal-cherries-nutmeg-honey-yogurt/27155",
+  "recipe_id": "27155",
+  "name": "Oatmeal with Cherries, Nutmeg & Honey Yogurt",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 cups frozen cherries",
+    "1 ⅓ cups plain Greek yogurt",
+    "honey",
+    "nutmeg, ground",
+    "oats, quick cooking",
+    "salt",
+    "water"
+  ],
+  "instructions": [
+    "Place water and salt in a medium saucepan, cover, and bring to a boil over high heat.",
+    "Once boiling, stir in oats, honey, and nutmeg. Cover and let simmer on low until oats reach desired consistency, 3-5 minutes.",
+    "Meanwhile, place yogurt and additional honey in a small bowl. Stir to combine and set aside.",
+    "Place cherries in a colander and rinse under hot water (from the tap) to thaw. Roughly chop.",
+    "When the oatmeal is done, add cherries to the pan and stir to combine. Continue to cook until warmed through, 1-2 minutes more. Remove from heat.",
+    "To serve, divide oatmeal between bowls and top with honey yogurt. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/3053/presentation_171451bb-9f20-43a4-8e54-13fdb30ec879.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "oatmeal-cherries-nutmeg-honey-yogurt"
+}

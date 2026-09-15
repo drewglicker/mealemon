@@ -1,0 +1,33 @@
+{
+  "source_url": "https://www.mealime.com/recipes/blueberry-crumble-smoothie-oats-almond-butter-cinnamon/6976",
+  "recipe_id": "6976",
+  "name": "Blueberry Crumble Smoothie with Oats, Almond Butter & Cinnamon",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT5M",
+  "total_time": "PT5M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "16 fl oz almond milk, unsweetened",
+    "4 bananas",
+    "4 cups frozen blueberries",
+    "1 cup plain Greek yogurt",
+    "cinnamon, ground",
+    "honey",
+    "natural almond butter",
+    "oats, quick cooking"
+  ],
+  "instructions": [
+    "This recipe will make about 8 cups. Work in batches to best fit your blender.",
+    "Peel bananas, break into chunks, and add to blender.",
+    "Add blueberries, yogurt, oats (uncooked), almond milk, almond butter, cinnamon, and honey to the blender.",
+    "Blend on high speed for several minutes until smooth.",
+    "Pour the smoothie into glasses and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/793/presentation_9b90e22a-8296-4be2-8810-25c8f526214c.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "blueberry-crumble-smoothie-oats-almond-butter-cinnamon"
+}

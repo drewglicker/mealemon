@@ -1,0 +1,30 @@
+{
+  "source_url": "https://www.mealime.com/recipes/breakfast-quesadilla-peanut-butter-raspberries-maple-syrup/27251",
+  "recipe_id": "27251",
+  "name": "Breakfast Quesadilla with Peanut Butter, Raspberries & Maple Syrup",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT20M",
+  "total_time": "PT20M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "4 large flour tortillas",
+    "2 (6 oz) pkgs raspberries",
+    "natural peanut butter",
+    "pure maple syrup",
+    "virgin coconut oil"
+  ],
+  "instructions": [
+    "Wash and dry raspberries.",
+    "Preheat a large skillet over medium heat.",
+    "While the skillet heats up, lay tortillas on a flat surface and spread peanut butter on one half of each tortilla. Top with raspberries and drizzle with maple syrup; fold in half to close.",
+    "Once the skillet is hot, add oil and swirl to coat the bottom. Working in batches, place assembled quesadillas in the skillet and cook, flipping halfway through, until golden on both sides, 5-6 minutes. Remove to a plate.",
+    "To serve, cut each quesadilla into wedges and divide between plates. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/3060/presentation_6324d155-bc59-4d1b-98c1-f07e98db4b0c.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "breakfast-quesadilla-peanut-butter-raspberries-maple-syrup"
+}

@@ -1,0 +1,39 @@
+{
+  "source_url": "https://www.mealime.com/recipes/roasted-salmon-garlic-sauteed-leeks-df/2377",
+  "recipe_id": "2377",
+  "name": "Roasted Salmon with Garlic Sautéed Leeks",
+  "recipe_category": "Dinner",
+  "recipe_cuisine": "",
+  "keywords": [
+    "Baked"
+  ],
+  "cook_time": "PT35M",
+  "total_time": "PT35M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "6 cloves garlic",
+    "6 leeks",
+    "1 lemon",
+    "1 ½ lb salmon fillet",
+    "black pepper",
+    "extra virgin olive oil",
+    "salt",
+    "thyme, dried",
+    "virgin coconut oil"
+  ],
+  "instructions": [
+    "Preheat oven to 425°F and position rack in the centre.",
+    "Pat salmon dry with a paper towel and place, skin-side down, on a baking sheet. Rub with olive oil, drizzle with lemon juice, and season with salt and freshly ground pepper. Set aside.",
+    "Wash leeks and trim ends. Slice on the diagonal into ¼ inch thick pieces.",
+    "Heat a skillet over medium heat.",
+    "Peel and mince garlic.",
+    "Place salmon in the oven and roast until it's opaque, 10-15 minutes (depending on thickness).",
+    "Melt butter in oil. Add garlic and stir until fragrant, 15-30 seconds. Add leeks and season with thyme, salt, and freshly ground pepper; stir to coat in the oil. Reduce heat to low and cook, stirring occasionally, until leeks are tender, about 10 minutes.",
+    "Serve salmon with buttered leeks on the side. Drizzle with juice from remaining ¼ lemon and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/267/presentation_4d340b73-bd44-4978-a5c9-f408dbafae01.jpg"
+  ],
+  "author": "Mealime",
+  "slug": "roasted-salmon-garlic-sauteed-leeks-df"
+}

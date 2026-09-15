@@ -1,0 +1,32 @@
+{
+  "source_url": "https://www.mealime.com/recipes/pecan-maple-roasted-strawberry-oatmeal/7003",
+  "recipe_id": "7003",
+  "name": "Pecan & Maple Roasted Strawberry Oatmeal",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT20M",
+  "total_time": "PT20M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "8 fl oz almond milk, unsweetened",
+    "½ cup pecan halves",
+    "2 (16 oz) pkg strawberries",
+    "oats, quick cooking",
+    "pure maple syrup",
+    "salt"
+  ],
+  "instructions": [
+    "Preheat oven to 400°F. Line a baking sheet with parchment paper.",
+    "Wash and dry strawberries; trim stem ends and slice.",
+    "Transfer strawberries to baking sheet, drizzle with maple syrup, and spread out in a single layer. Roast until softened, 10-13 minutes.",
+    "Roughly chop pecans.",
+    "Add salt and water to a medium saucepan and bring to a boil over high heat. Once boiling, stir in oats and reduce heat to medium. Cover and let simmer for 3-5 minutes or until oats reach desired consistency.",
+    "To serve, divide oats between bowls and top with strawberries, pecans, and almond milk. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/796/presentation_f0445ffe-71d5-43ec-8482-830803904953.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "pecan-maple-roasted-strawberry-oatmeal"
+}

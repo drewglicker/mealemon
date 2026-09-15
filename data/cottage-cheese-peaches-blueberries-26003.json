@@ -1,0 +1,26 @@
+{
+  "source_url": "https://www.mealime.com/recipes/cottage-cheese-peaches-blueberries/26003",
+  "recipe_id": "26003",
+  "name": "Cottage Cheese with Peaches & Blueberries",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT8M",
+  "total_time": "PT8M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 (6 oz) pkg blueberries",
+    "3 cups cottage cheese",
+    "2 peaches"
+  ],
+  "instructions": [
+    "Wash, dry, and quarter peaches lengthwise (around the pit); twist quarters to separate, then remove and discard pits. Medium dice the flesh.",
+    "Wash and dry blueberries.",
+    "To serve, divide cottage cheese, peaches, and blueberries between bowls. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe_variant/thumbnail/26003/presentation_6837294c-ab19-48f8-a6f2-c7ffa103669a.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "cottage-cheese-peaches-blueberries"
+}

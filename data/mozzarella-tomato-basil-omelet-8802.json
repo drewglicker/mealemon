@@ -1,0 +1,37 @@
+{
+  "source_url": "https://www.mealime.com/recipes/mozzarella-tomato-basil-omelet/8802",
+  "recipe_id": "8802",
+  "name": "Mozzarella, Tomato & Basil Omelet",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT20M",
+  "total_time": "PT20M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "12 eggs",
+    "1 small pkg fresh basil",
+    "½ (8 oz) block mozzarella cheese",
+    "4 tomatoes",
+    "black pepper",
+    "butter, unsalted",
+    "salt"
+  ],
+  "instructions": [
+    "Wash and thinly slice the tomatoes. Set half aside for garnish.",
+    "Wash and pick basil leaves off the stems, roll up crosswise, and thinly slice into ribbons.",
+    "Coarsely grate cheese.",
+    "Preheat a nonstick skillet over medium heat.",
+    "In a medium bowl, whisk together eggs, salt, and pepper.",
+    "Once the skillet is hot, add butter and swirl to coat the bottom.",
+    "Add ½ of the eggs to the skillet and swirl to cover the bottom. As eggs begin to set, use a spatula to pull the cooked edges towards the center of the pan. Then tilt the pan, allowing the uncooked egg to move to the edges. Cook until just set, pressing the eggs into a smooth layer on the bottom of the skillet.",
+    "Sprinkle ½ of the cheese over one side of the omelet; layer ½ of the reserved tomato slices and ½ the basil on top. Fold the omelet in half and cook until cheese is melted, about 1 minute.",
+    "Add more butter to the skillet and repeat with remaining egg mixture, cheese, tomato, and basil.",
+    "To serve, cut omelets in half and divide between plates; enjoy with remaining tomato slices on the side!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/1016/presentation_bc72505c-d025-4745-9afc-f8ccf4214a0b.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "mozzarella-tomato-basil-omelet"
+}

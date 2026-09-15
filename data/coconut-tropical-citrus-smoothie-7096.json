@@ -1,0 +1,31 @@
+{
+  "source_url": "https://www.mealime.com/recipes/coconut-tropical-citrus-smoothie/7096",
+  "recipe_id": "7096",
+  "name": "Coconut Tropical Citrus Smoothie",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT10M",
+  "total_time": "PT10M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 (13.5 fl oz) can coconut milk",
+    "480 ml frozen mangoes",
+    "2 oranges",
+    "1 small pineapple"
+  ],
+  "instructions": [
+    "This recipe will make about 8 cups. Work in batches to best fit your blender.",
+    "Wash and dry the fresh produce.",
+    "Peel the oranges and cut into quarters; place in blender.",
+    "Cut skin off pineapple, core, and cut into large pieces; place in blender.",
+    "Add the mango, coconut milk, and 4 ice cubes to the blender.",
+    "Blend on high speed for several minutes until smooth.",
+    "Pour the smoothie into glasses and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/811/presentation_de10bc1a-79fb-4aee-bd79-61b907df9c7d.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "coconut-tropical-citrus-smoothie"
+}

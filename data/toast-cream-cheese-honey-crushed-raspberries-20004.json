@@ -1,0 +1,31 @@
+{
+  "source_url": "https://www.mealime.com/recipes/toast-cream-cheese-honey-crushed-raspberries/20004",
+  "recipe_id": "20004",
+  "name": "Toast with Cream Cheese & Honey-Crushed Raspberries",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "⅔ (8 oz) block cream cheese",
+    "2 (6 oz) pkgs raspberries",
+    "8 slices whole grain bread",
+    "cardamom, ground",
+    "cinnamon, ground",
+    "honey"
+  ],
+  "instructions": [
+    "Preheat oven to broil on high and position rack in the upper third of the oven.",
+    "Wash and dry raspberries; place in a medium bowl along with honey, cardamom, and cinnamon. Using a fork or potato masher, gently crush the raspberries until they reach a chunky, jam-like consistency. Set aside.",
+    "Arrange bread on a large baking sheet pan. Place in the oven and broil, flipping halfway through, until toasted, 2-3 minutes. Remove from oven.",
+    "Spread cream cheese over the toast, then top with crushed raspberries.",
+    "To serve, divide toasts between plates and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe_variant/thumbnail/20004/presentation_ff8abfb6-5971-48d2-98b2-b392eecc7218.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "toast-cream-cheese-honey-crushed-raspberries"
+}

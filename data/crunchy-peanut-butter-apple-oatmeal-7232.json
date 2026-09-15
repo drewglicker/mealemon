@@ -1,0 +1,31 @@
+{
+  "source_url": "https://www.mealime.com/recipes/crunchy-peanut-butter-apple-oatmeal/7232",
+  "recipe_id": "7232",
+  "name": "Crunchy Peanut Butter & Apple Oatmeal",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT12M",
+  "total_time": "PT12M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 Gala apples",
+    "½ cup peanuts, roasted unsalted",
+    "natural peanut butter",
+    "oats, quick cooking",
+    "pure maple syrup",
+    "salt"
+  ],
+  "instructions": [
+    "Add salt and water to the saucepan, cover, and bring to a boil over high heat. Once boiling, stir in oats and maple syrup. Cover and let simmer, on low, 3-5 minutes, or until oats reach desired consistency.",
+    "Wash and dry apples, then core and medium dice.",
+    "Roughly chop peanuts.",
+    "When oats are done, stir in peanut butter.",
+    "To serve, divide oats between bowls and top with chopped apples and peanuts. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/831/presentation_f0dd97fe-41e3-4ff5-b532-0a97a5a45727.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "crunchy-peanut-butter-apple-oatmeal"
+}

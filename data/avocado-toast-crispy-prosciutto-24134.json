@@ -1,0 +1,35 @@
+{
+  "source_url": "https://www.mealime.com/recipes/avocado-toast-crispy-prosciutto/24134",
+  "recipe_id": "24134",
+  "name": "Avocado Toast with Crispy Prosciutto",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 avocados",
+    "4 slices prosciutto",
+    "4 slices whole grain bread",
+    "black pepper",
+    "extra virgin olive oil",
+    "garlic powder",
+    "onion powder"
+  ],
+  "instructions": [
+    "Preheat a large skillet over medium heat. ",
+    "Once the skillet is hot, add oil and swirl to coat the bottom. Lay prosciutto in the skillet and cook until it browns slightly, about 1 minute per side. Remove to a plate and set aside.",
+    "Preheat oven to broil on high and position rack in the upper third of the oven. (Skip this step if you are using a toaster for the bread.)",
+    "Arrange bread on a baking sheet pan. Place in the oven and broil, flipping halfway through, until toasted, about 2 minutes; remove from oven. (Alternatively, you can use a toaster.)",
+    "Meanwhile, wash, dry, halve, and pit avocados; using a spoon, scoop out the flesh and place in a medium bowl. Mash with a fork or potato masher until smooth.",
+    "Add spices to the bowl with the avocado, then mash once more to combine the spread.",
+    "Divide avocado spread between toast slices and smooth out in an even layer. ",
+    "To serve, divide toast between plates; crumble crispy prosciutto over top. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/2701/presentation_5a7aa8cf-a973-470c-9639-755c157856ea.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "avocado-toast-crispy-prosciutto"
+}

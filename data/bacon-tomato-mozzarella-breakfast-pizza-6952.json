@@ -1,0 +1,35 @@
+{
+  "source_url": "https://www.mealime.com/recipes/bacon-tomato-mozzarella-breakfast-pizza/6952",
+  "recipe_id": "6952",
+  "name": "Bacon, Tomato & Mozzarella Breakfast Pizza",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "4 slices bacon",
+    "4 eggs",
+    "4 flatbreads or naan",
+    "½ (8 oz) block mozzarella cheese",
+    "2 tomatoes",
+    "black pepper",
+    "salt"
+  ],
+  "instructions": [
+    "Preheat oven to 425°F.",
+    "Preheat a skillet over medium-high heat.",
+    "Chop the bacon into bite-sized pieces. Add to the skillet and cook until crispy, 3-4 minutes. When done, use a slotted spoon to transfer bacon to a plate lined with paper towels and pat dry.",
+    "Wash, dry, and slice the tomatoes.",
+    "Grate cheese.",
+    "Place flatbread on a baking sheet; arrange tomatoes, cheese, and bacon on the flatbread, leaving the center open for the egg.",
+    "Gently break an egg into the center of each flatbread. Bake until the eggs are set, about 8 minutes.",
+    "To serve, transfer pizzas to plates and season with salt and pepper. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/789/presentation_5c3360c4-ccd7-452c-9a0d-3adc6473d147.jpg"
+  ],
+  "author": "Mealime",
+  "slug": "bacon-tomato-mozzarella-breakfast-pizza"
+}

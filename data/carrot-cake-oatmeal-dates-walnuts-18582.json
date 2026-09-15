@@ -1,0 +1,37 @@
+{
+  "source_url": "https://www.mealime.com/recipes/carrot-cake-oatmeal-dates-walnuts/18582",
+  "recipe_id": "18582",
+  "name": "\"Carrot Cake\" Oatmeal with Dates & Walnuts",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "4 medium carrots",
+    "½ cup medjool dates, pitted",
+    "⅔ cup walnuts",
+    "8 fl oz whole milk",
+    "brown sugar",
+    "cinnamon, ground",
+    "cloves, ground",
+    "nutmeg, ground",
+    "oats, quick cooking",
+    "salt",
+    "water"
+  ],
+  "instructions": [
+    "Place water and salt in a medium saucepan, cover, and bring to a boil over high heat. ",
+    "Meanwhile, wash, dry, trim, and peel carrots; coarsely grate.",
+    "Roughly chop dates.",
+    "Once the water is boiling, stir in carrots, dates, oats, and spices. Reduce heat to low, cover, and let simmer, stirring occasionally, until oatmeal reaches desired consistency, 3-5 minutes.",
+    "While the oatmeal cooks, roughly chop walnuts.",
+    "Divide oatmeal between bowls; top with walnuts and sprinkle with sugar. Serve with milk and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/2173/presentation_b60a22d3-9e60-4989-9c92-3766981796e2.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "carrot-cake-oatmeal-dates-walnuts"
+}

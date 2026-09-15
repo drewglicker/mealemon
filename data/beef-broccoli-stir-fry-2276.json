@@ -1,0 +1,41 @@
+{
+  "source_url": "https://www.mealime.com/recipes/beef-broccoli-stir-fry/2276",
+  "recipe_id": "2276",
+  "name": "Beef & Broccoli Stir Fry",
+  "recipe_category": "Dinner",
+  "recipe_cuisine": "Chinese",
+  "keywords": [
+    "Stir-Fries"
+  ],
+  "cook_time": "PT40M",
+  "total_time": "PT40M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "4 crowns broccoli",
+    "2 cloves garlic",
+    "2 (1 inch) pieces ginger root",
+    "1 medium red onion",
+    "1 ½ lb striploin (New York strip) steak",
+    "black pepper",
+    "coconut aminos",
+    "crushed red pepper",
+    "toasted sesame oil",
+    "virgin coconut oil"
+  ],
+  "instructions": [
+    "Wash broccoli. Separate into bite-sized florets and cut stems into smaller pieces. Transfer to a plate.",
+    "Heat a skillet over medium-high heat.",
+    "Peel and thinly slice onion into half rings. Peel and mince garlic. Peel and mince or grate ginger.",
+    "Thinly slice steak against the grain into strips.",
+    "Coat bottom of skillet with oil. Add steak and stir fry until browned, 2-3 minutes. Transfer to a plate.",
+    "Coat skillet with more oil, then add onion, garlic, ginger, and crushed red pepper. Stir fry until onion is softened, 3-4 minutes.",
+    "Add broccoli and stir fry until bright green and tender-crisp, 4-5 minutes.",
+    "Add steak, coconut aminos, sesame oil, and pepper; toss to combine.",
+    "Place stir fry in a bowl and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe_variant/thumbnail/2276/presentation_ad6daffb-ae50-481b-969e-b5faa1fc2daa.jpg"
+  ],
+  "author": "Mealime",
+  "slug": "beef-broccoli-stir-fry"
+}

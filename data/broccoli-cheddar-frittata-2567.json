@@ -1,0 +1,39 @@
+{
+  "source_url": "https://www.mealime.com/recipes/broccoli-cheddar-frittata/2567",
+  "recipe_id": "2567",
+  "name": "Broccoli & Cheddar Frittata",
+  "recipe_category": "Dinner",
+  "recipe_cuisine": "",
+  "keywords": [
+    "Frittatas"
+  ],
+  "cook_time": "PT35M",
+  "total_time": "PT35M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "4 crowns broccoli",
+    "½ (8 oz) block cheddar cheese",
+    "12 eggs",
+    "1 medium yellow onion",
+    "black pepper",
+    "butter, unsalted",
+    "salt"
+  ],
+  "instructions": [
+    "Peel and small dice the onion. Wash the broccoli and chop into bite-size florets.",
+    "Heat a skillet over medium heat.",
+    "Grate 1 cup of cheddar into a small bowl and set aside.",
+    "Add butter to the skillet and swirl to coat bottom. Add the onion and cook, stirring frequently, until softened and lightly browned, 3-4 minutes.",
+    "In a large bowl, whisk together the eggs, water, ½ of the shredded cheddar, salt, and pepper.",
+    "Add more butter to the skillet followed by broccoli florets. Cook, stirring occasionally, for 2-3 minutes.",
+    "Preheat broiler and position rack in the upper third of the oven.",
+    "Spread out the broccoli evenly in the skillet. Reduce heat to medium-low and pour in the egg mixture. As eggs set around the edge of the skillet, gently lift cooked portions with a spatula to allow uncooked egg to flow underneath. Cook until bottom and sides are firm but the top is still runny, 5-7 minutes.",
+    "Sprinkle with the remaining cheddar. Place skillet in the oven until the top is set, 2-3 minutes.",
+    "To serve, cut frittata into wedges and place on a plate. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/291/presentation_c777acba-b6bb-40b2-a1c2-1e8339bae1cb.jpg"
+  ],
+  "author": "Mealime",
+  "slug": "broccoli-cheddar-frittata"
+}

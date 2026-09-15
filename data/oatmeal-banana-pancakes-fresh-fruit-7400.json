@@ -1,0 +1,36 @@
+{
+  "source_url": "https://www.mealime.com/recipes/oatmeal-banana-pancakes-fresh-fruit/7400",
+  "recipe_id": "7400",
+  "name": "Oatmeal Banana Pancakes with Fresh Fruit",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "4 bananas",
+    "½ (6 oz) pkg blueberries",
+    "2 kiwifruit",
+    "1 (16 oz) pkg strawberries",
+    "8 fl oz whole milk",
+    "butter, unsalted",
+    "cinnamon, ground",
+    "oats, quick cooking",
+    "pure maple syrup"
+  ],
+  "instructions": [
+    "Wash and dry the fresh produce.",
+    "Preheat a large skillet over medium heat.",
+    "Add the bananas, oats, milk, and cinnamon to the blender. Purée for 30 seconds, until smooth.",
+    "Once the skillet is hot, add butter and swirl to coat the bottom.",
+    "Using a ¼-cup measure, pour the batter into the skillet. Cook for 1-2 minutes on each side, until browned. Work in batches if necessary.",
+    "Slice the strawberries in half. Peel and slice the kiwis.",
+    "Divide the pancakes, strawberries, kiwis, and blueberries between plates. Top with maple syrup and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/851/presentation_394b51d1-cb88-49f2-9b04-7a4c69eb40a5.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "oatmeal-banana-pancakes-fresh-fruit"
+}

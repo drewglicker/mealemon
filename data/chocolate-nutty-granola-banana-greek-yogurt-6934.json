@@ -1,0 +1,38 @@
+{
+  "source_url": "https://www.mealime.com/recipes/chocolate-nutty-granola-banana-greek-yogurt/6934",
+  "recipe_id": "6934",
+  "name": "Chocolate Nutty Granola with Banana & Greek Yogurt",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT20M",
+  "total_time": "PT20M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "½ cup almonds",
+    "2 bananas",
+    "2 cups plain Greek yogurt",
+    "½ cup walnuts",
+    "cinnamon, ground",
+    "cocoa powder",
+    "oats, quick cooking",
+    "pure maple syrup",
+    "salt",
+    "virgin coconut oil"
+  ],
+  "instructions": [
+    "Preheat oven to 400°F.",
+    "Add oats to a large mixing bowl.",
+    "Roughly chop nuts and add to the bowl.",
+    "Melt coconut oil in a medium saucepan. Add maple syrup, salt, cocoa powder, and cinnamon; whisk to combine.",
+    "Pour oil mixture over oats and nuts and stir to coat.",
+    "Spread out on a baking sheet lined with parchment paper and bake for 6-8 minutes, stirring halfway through cooking. Watch carefully as the nuts can burn easily.",
+    "Peel the bananas and slice.",
+    "Spoon yogurt into bowls and top with granola and bananas. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/786/presentation_a8b4b60f-6db2-42ac-a5eb-107b975a4ecd.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "chocolate-nutty-granola-banana-greek-yogurt"
+}

@@ -1,0 +1,41 @@
+{
+  "source_url": "https://www.mealime.com/recipes/spinach-tomato-frittata-fresh-mozzarella/1412",
+  "recipe_id": "1412",
+  "name": "Spinach & Tomato Frittata with Fresh Mozzarella",
+  "recipe_category": "Dinner",
+  "recipe_cuisine": "",
+  "keywords": [
+    "Frittatas"
+  ],
+  "cook_time": "PT30M",
+  "total_time": "PT30M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 (5 oz) pkg baby spinach",
+    "12 eggs",
+    "1 (8 oz) pkg fresh mozzarella cheese",
+    "4 cloves garlic",
+    "2 tomatoes",
+    "black pepper",
+    "extra virgin olive oil",
+    "Italian seasoning",
+    "salt"
+  ],
+  "instructions": [
+    "Preheat oven to broil and position rack under the broiler.",
+    "Wash and dry spinach and tomatoes. Slice tomatoes into rounds. Peel and mince garlic.",
+    "Thinly slice mozzarella.",
+    "Heat a skillet over medium heat.",
+    "In a large bowl, whisk together eggs, water, Italian seasoning, salt, and pepper.",
+    "Coat bottom of skillet with oil. Add garlic and spinach. Cook until spinach begins to wilt, 1-2 minutes.",
+    "Pour in egg mixture. As eggs set around the edge of the skillet, gently lift cooked portions with a spatula to allow uncooked egg to flow underneath. Cook until bottom and sides are firm but the top is still runny, 8-10 minutes.",
+    "Add tomatoes and mozzarella.",
+    "Place skillet in the oven and broil until the top is set, 2-3 minutes.",
+    "To serve, cut frittata into wedges and place on a plate. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/198/presentation_e25b38a2-b802-49d2-bad2-4a98e3e34936.jpg"
+  ],
+  "author": "Mealime",
+  "slug": "spinach-tomato-frittata-fresh-mozzarella"
+}

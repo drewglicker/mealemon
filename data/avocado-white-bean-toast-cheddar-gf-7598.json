@@ -1,0 +1,40 @@
+{
+  "source_url": "https://www.mealime.com/recipes/avocado-white-bean-toast-cheddar-gf/7598",
+  "recipe_id": "7598",
+  "name": "Avocado White Bean Toast with Cheddar",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT12M",
+  "total_time": "PT12M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 avocados",
+    "1 (15 oz) can cannellini (white kidney) beans",
+    "¼ (8 oz) block cheddar cheese",
+    "2 cloves garlic",
+    "4 slices gluten-free bread",
+    "1 lemon",
+    "2 tomatoes",
+    "black pepper",
+    "salt",
+    "thyme, dried"
+  ],
+  "instructions": [
+    "Drain and rinse beans in a colander; set aside to drain further.",
+    "Wash and dry the fresh produce.",
+    "Halve and pit the avocados. Cut into chunks while still in the skin, then scoop out into a medium bowl.",
+    "Juice lemon into the bowl with the avocado.",
+    "Peel and mince garlic; add to the same bowl.",
+    "Add beans and spices to the bowl with the avocado; mash until well combined but still slightly chunky.",
+    "Medium dice tomatoes.",
+    "Slice cheese.",
+    "Toast bread if desired.",
+    "To serve, divide toast between plates, top with cheese, avocado-bean mix, and tomatoes. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/868/presentation_645e945d-e4f7-422d-8ea5-6c3d9c6c0e72.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "avocado-white-bean-toast-cheddar-gf"
+}

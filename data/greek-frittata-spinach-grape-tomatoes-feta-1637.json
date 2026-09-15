@@ -1,0 +1,43 @@
+{
+  "source_url": "https://www.mealime.com/recipes/greek-frittata-spinach-grape-tomatoes-feta/1637",
+  "recipe_id": "1637",
+  "name": "Greek Frittata with Spinach, Grape Tomatoes & Feta",
+  "recipe_category": "Dinner",
+  "recipe_cuisine": "Greek",
+  "keywords": [
+    "Frittatas"
+  ],
+  "cook_time": "PT30M",
+  "total_time": "PT30M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 (5 oz) pkg baby spinach",
+    "1 (4 oz) pkg crumbled feta cheese",
+    "12 eggs",
+    "2 cloves garlic",
+    "1 pint grape tomatoes",
+    "1 medium red onion",
+    "black pepper",
+    "extra virgin olive oil",
+    "oregano, dried",
+    "salt"
+  ],
+  "instructions": [
+    "Wash and dry spinach. Wash and halve tomatoes.",
+    "Heat a skillet over medium heat.",
+    "Peel and small dice onion. Peel and mince garlic.",
+    "Coat bottom of skillet with oil. Add onion and, stirring frequently, cook until softened, 3-4 minutes.",
+    "In a medium bowl, whisk together eggs, oregano, salt, and pepper.",
+    "Preheat oven to broil and position rack about 4 inches from the top.",
+    "Add garlic and tomatoes to skillet. Stir to combine and cook for 1-2 minutes.",
+    "Add spinach and stir to combine.",
+    "Spread out ingredients evenly in the skillet. Pour in egg mixture. As eggs set around the edge of the skillet, gently lift cooked portions with a spatula to allow uncooked egg to flow underneath. Cook until bottom and sides are firm but the top is still runny, 6-8 minutes.",
+    "Sprinkle feta over top. Place skillet in the oven under the broiler until the top is set, 2-3 minutes.",
+    "To serve, cut frittata into wedges and place on a plate. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/141/presentation_244fcc53-e53e-4c34-ba06-edc6106ee246.jpg"
+  ],
+  "author": "Mealime",
+  "slug": "greek-frittata-spinach-grape-tomatoes-feta"
+}

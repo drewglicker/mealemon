@@ -1,0 +1,33 @@
+{
+  "source_url": "https://www.mealime.com/recipes/curried-deviled-eggs-fresh-dill/22646",
+  "recipe_id": "22646",
+  "name": "Curried Deviled Eggs with Fresh Dill",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT30M",
+  "total_time": "PT30M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "6 eggs",
+    "¼ small bunch fresh dill",
+    "avocado oil mayonnaise",
+    "black pepper",
+    "curry powder",
+    "Dijon mustard",
+    "salt"
+  ],
+  "instructions": [
+    "Place eggs in a medium saucepan, cover with water, and bring to a boil. Reduce heat to a simmer and cook for 8 minutes. Drain hot water and add ice or run under cold water to cool.",
+    "Meanwhile, wash, dry and shave dill leaves off the stems; discard stems and mince the leaves. Place in a small bowl and set aside.",
+    "When the eggs are cool enough to handle, peel and halve lengthwise.",
+    "Scoop the yolks out into another small bowl (reserve egg whites for the next step). Add mayo, Dijon, and spices. Using a fork, mash to combine, creating a smooth paste.",
+    "Spoon the yolk mixture back into the eggs, then sprinkle with dill.",
+    "To serve, divide eggs between plates and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/2562/presentation_97a2e81b-9025-4805-9fcf-70ae161a0df4.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "curried-deviled-eggs-fresh-dill"
+}

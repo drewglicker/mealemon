@@ -1,0 +1,32 @@
+{
+  "source_url": "https://www.mealime.com/recipes/baked-spinach-prosciutto-egg-cups/6970",
+  "recipe_id": "6970",
+  "name": "Baked Spinach & Prosciutto Egg Cups",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT20M",
+  "total_time": "PT20M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "¼ (5 oz) pkg baby spinach",
+    "8 eggs",
+    "8 slices prosciutto",
+    "black pepper",
+    "butter, unsalted"
+  ],
+  "instructions": [
+    "Preheat oven to 400°F and position a rack near the bottom of the oven. Grease 8 muffin cups with butter.",
+    "Line each muffin cup with a slice of prosciutto, doing your best to cover the sides and bottom surface of the tin.",
+    "Wash and dry the spinach (unless it came pre-washed). Lay the spinach leaves over the prosciutto.",
+    "Crack an egg into each muffin cup.",
+    "Bake until the whites of the eggs are set but the yolk is still runny (or until desired doneness), about 12-15 minutes.",
+    "Remove from the oven and let cool for 1 minute so the eggs set. Use a spatula to wedge each egg out of its cup.",
+    "Season with pepper and serve immediately; enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/792/presentation_f0e07f9f-0af4-4a5f-aae5-a54d2701413e.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "baked-spinach-prosciutto-egg-cups"
+}

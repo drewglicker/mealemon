@@ -1,0 +1,32 @@
+{
+  "source_url": "https://www.mealime.com/recipes/mixed-berry-smoothie-bowl-cinnamon-almonds/8390",
+  "recipe_id": "8390",
+  "name": "Mixed Berry Smoothie Bowl with Cinnamon & Almonds",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT10M",
+  "total_time": "PT10M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "16 fl oz almond milk, unsweetened",
+    "½ cup almonds, sliced",
+    "2 bananas",
+    "2 ½ cups frozen blueberries",
+    "2 ½ cups frozen raspberries",
+    "cinnamon, ground",
+    "natural almond butter"
+  ],
+  "instructions": [
+    "This recipe will make about 8 cups. Work in batches to best fit your blender.",
+    "Peel the bananas. Break into chunks and add to blender.",
+    "Add almond milk, raspberries, blueberries, almond butter, and cinnamon to the blender. ",
+    "Blend on high speed for several minutes until smooth. ",
+    "Divide the smoothie between bowls and top with additional raspberries, blueberries, and almonds. "
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/947/presentation_22c5f5c4-ab58-4eaa-9df1-8f6474f9b449.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "mixed-berry-smoothie-bowl-cinnamon-almonds"
+}

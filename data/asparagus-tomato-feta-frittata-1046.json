@@ -1,0 +1,40 @@
+{
+  "source_url": "https://www.mealime.com/recipes/asparagus-tomato-feta-frittata/1046",
+  "recipe_id": "1046",
+  "name": "Asparagus, Tomato & Feta Frittata",
+  "recipe_category": "Dinner",
+  "recipe_cuisine": "",
+  "keywords": [
+    "Frittatas"
+  ],
+  "cook_time": "PT35M",
+  "total_time": "PT35M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 small bunches asparagus",
+    "1 (4 oz) pkg crumbled feta cheese",
+    "12 eggs",
+    "4 cloves garlic",
+    "2 tomatoes",
+    "black pepper",
+    "dill, dried",
+    "extra virgin olive oil",
+    "salt"
+  ],
+  "instructions": [
+    "Preheat oven to broil.",
+    "Peel and mince garlic. Wash asparagus and snap off woody ends. Cut diagonally into 2 inch pieces. Wash and medium dice tomatoes.",
+    "Preheat a skillet over medium heat.",
+    "In a medium bowl, whisk together eggs, water, dill, salt, and pepper. Set aside.",
+    "Coat bottom of skillet with oil. Add garlic and cook until fragrant, 15-30 seconds. Add asparagus and cook until tender crisp, 2-3 minutes.",
+    "Add tomato and cook for another 2 minutes.",
+    "Pour in egg mixture. As eggs set around the edge of the skillet, gently lift cooked portions with a spatula to allow uncooked egg to flow underneath. Cook until bottom and sides are firm but the top is still runny, 8-10 minutes.",
+    "Sprinkle feta over top. Place skillet in the oven under the broiler until the top is set, 2-3 minutes.",
+    "To serve, cut frittata into wedges and place on a plate. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/169/presentation_1ab1fe7f-b468-4ac5-8bf4-b3c7e70d03f3.jpg"
+  ],
+  "author": "Mealime",
+  "slug": "asparagus-tomato-feta-frittata"
+}

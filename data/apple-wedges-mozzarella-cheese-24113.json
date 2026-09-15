@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.mealime.com/recipes/apple-wedges-mozzarella-cheese/24113",
+  "recipe_id": "24113",
+  "name": "Apple Wedges with Mozzarella Cheese",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT10M",
+  "total_time": "PT10M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 Gala apples",
+    "⅔ (8 oz) block mozzarella cheese"
+  ],
+  "instructions": [
+    "Wash, dry, quarter, and core apples. Slice each apple into 8 wedges.",
+    "Cut cheese into 16 slices.",
+    "To serve, pair apple wedges with cheese slices and divide between plates. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe_variant/thumbnail/24113/presentation_ddb3b5e8-b30b-4c03-9549-a1cbbe72d3a0.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "apple-wedges-mozzarella-cheese"
+}

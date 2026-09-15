@@ -1,0 +1,38 @@
+{
+  "source_url": "https://www.mealime.com/recipes/avocado-white-bean-toast-gf/7601",
+  "recipe_id": "7601",
+  "name": "Avocado White Bean Toast",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT12M",
+  "total_time": "PT12M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 avocados",
+    "1 (15 oz) can cannellini (white kidney) beans",
+    "2 cloves garlic",
+    "4 slices gluten-free bread",
+    "1 lemon",
+    "2 tomatoes",
+    "black pepper",
+    "salt",
+    "thyme, dried"
+  ],
+  "instructions": [
+    "Drain and rinse beans in a colander; set aside to drain further.",
+    "Wash and dry the fresh produce.",
+    "Halve and pit the avocados. Cut into chunks while still in the skin, then scoop out into a medium bowl.",
+    "Juice lemon into the bowl with the avocado.",
+    "Peel and mince garlic; add to the same bowl.",
+    "Add beans and spices to the bowl with the avocado; mash until well combined but still slightly chunky.",
+    "Medium dice tomatoes.",
+    "Toast bread if desired.",
+    "To serve, divide toast between plates, top with avocado-bean mix and tomatoes. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe_variant/thumbnail/7601/presentation_29be5deb-36b4-49f0-a2b1-55da8155568c.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "avocado-white-bean-toast-gf"
+}

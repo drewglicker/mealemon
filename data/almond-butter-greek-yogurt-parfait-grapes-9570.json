@@ -1,0 +1,30 @@
+{
+  "source_url": "https://www.mealime.com/recipes/almond-butter-greek-yogurt-parfait-grapes/9570",
+  "recipe_id": "9570",
+  "name": "Almond Butter Greek Yogurt Parfait with Grapes",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT10M",
+  "total_time": "PT10M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "⅔ cup almonds, sliced",
+    "3 cups plain Greek yogurt",
+    "½ lb red grapes",
+    "honey",
+    "natural almond butter"
+  ],
+  "instructions": [
+    "Preheat a skillet over medium heat.",
+    "Add almonds to the skillet; cook, stirring occasionally, until lightly toasted, 2-3 minutes. Set aside to cool.",
+    "Combine yogurt, honey, and almond butter in a medium bowl and whisk until smooth.",
+    "Wash, dry, and cut grapes into halves.",
+    "To serve, divide yogurt, grapes, and almonds between jars or bowls, alternating ingredients to create layers. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/1095/presentation_d1bdceb4-9b8f-4b0c-8ac6-9e85e1db3098.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "almond-butter-greek-yogurt-parfait-grapes"
+}

@@ -1,0 +1,34 @@
+{
+  "source_url": "https://www.mealime.com/recipes/golden-carrot-orange-smoothie-turmeric-ginger/7358",
+  "recipe_id": "7358",
+  "name": "Golden Carrot Orange Smoothie with Turmeric & Ginger",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT12M",
+  "total_time": "PT12M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "24 fl oz almond milk, unsweetened",
+    "4 medium carrots",
+    "1 cup cashews, roasted unsalted",
+    "2 cups frozen mangoes",
+    "2 (1 inch) pieces ginger root",
+    "4 oranges",
+    "turmeric, ground"
+  ],
+  "instructions": [
+    "This recipe will make about 8 cups. Work in batches to best fit your blender.",
+    "Wash and dry the fresh produce.",
+    "Peel the oranges; remove the white pith, and cut into chunks. Add to blender.",
+    "Peel the carrots and ginger, and cut into chunks. Add to blender.",
+    "Add mango, almond milk, cashews, turmeric, and 4 ice cubes.",
+    "Blend on high speed for several minutes until smooth.",
+    "Pour the smoothie into glasses and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/847/presentation_7a8ae7ea-d35b-42a4-8a2b-334755cf96d9.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "golden-carrot-orange-smoothie-turmeric-ginger"
+}

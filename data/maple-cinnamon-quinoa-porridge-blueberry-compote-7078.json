@@ -1,0 +1,32 @@
+{
+  "source_url": "https://www.mealime.com/recipes/maple-cinnamon-quinoa-porridge-blueberry-compote/7078",
+  "recipe_id": "7078",
+  "name": "Maple Cinnamon Quinoa Porridge with Blueberry Compote ",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [
+    "Bowls"
+  ],
+  "cook_time": "PT30M",
+  "total_time": "PT30M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "28 fl oz almond milk, unsweetened",
+    "2 cups frozen blueberries",
+    "1 cup quinoa",
+    "cinnamon, ground",
+    "pure maple syrup",
+    "salt"
+  ],
+  "instructions": [
+    "Place quinoa, almond milk, maple syrup, salt, and cinnamon in a medium saucepan. Bring to a boil over medium-high heat.",
+    "Once the quinoa mixture comes to a boil, reduce heat to low, allow to cool slightly, and cover with a lid. Cook until most of the liquid is absorbed, about 20 minutes. ",
+    "Add the blueberries and maple syrup to a small saucepan. Heat on medium-high, 3-4 minutes.",
+    "To serve, divide porridge between bowls, drizzle with more milk, and top with blueberry compote. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/808/presentation_e40ffeb6-22bf-4407-88f1-e40fd464d46d.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "maple-cinnamon-quinoa-porridge-blueberry-compote"
+}

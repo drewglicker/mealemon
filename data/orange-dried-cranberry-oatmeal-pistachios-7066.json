@@ -1,0 +1,32 @@
+{
+  "source_url": "https://www.mealime.com/recipes/orange-dried-cranberry-oatmeal-pistachios/7066",
+  "recipe_id": "7066",
+  "name": "Orange & Dried Cranberry Oatmeal with Pistachios",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 cup dried cranberries",
+    "2 oranges",
+    "½ cup pistachios, unsalted",
+    "8 fl oz whole milk",
+    "cinnamon, ground",
+    "oats, quick cooking",
+    "pure maple syrup",
+    "salt"
+  ],
+  "instructions": [
+    "Wash and juice oranges into a medium saucepan.",
+    "Add salt and water to the saucepan, cover, and bring to a boil over high heat. Once boiling, stir in oats, cranberries, cinnamon, and maple syrup; reduce heat to medium-low. Cover and let simmer for 3-5 minutes or until oats reach desired consistency. ",
+    "Roughly chop the pistachios.",
+    "To serve, divide oats between bowls and top with pistachios and milk. Enjoy! "
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/806/presentation_498f8217-db7c-4491-8c62-8820c8f4dd4a.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "orange-dried-cranberry-oatmeal-pistachios"
+}

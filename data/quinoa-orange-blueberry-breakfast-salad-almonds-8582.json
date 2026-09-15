@@ -1,0 +1,36 @@
+{
+  "source_url": "https://www.mealime.com/recipes/quinoa-orange-blueberry-breakfast-salad-almonds/8582",
+  "recipe_id": "8582",
+  "name": "Quinoa, Orange & Blueberry Breakfast Salad with Almonds",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT23M",
+  "total_time": "PT23M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "½ cup almonds, sliced",
+    "1 (5 oz) pkg baby spinach",
+    "1 (6 oz) pkg blueberries",
+    "2 oranges",
+    "1 cup quinoa",
+    "balsamic vinegar",
+    "black pepper",
+    "Dijon mustard",
+    "extra virgin olive oil",
+    "pure maple syrup",
+    "salt"
+  ],
+  "instructions": [
+    "In a medium saucepan, combine quinoa and water; bring to a boil. Reduce heat to a simmer, cover, and cook for 15 minutes. Remove from heat and let stand, covered, for 5 minutes.",
+    "Meanwhile, in a small bowl, combine oil, vinegar, maple syrup, Dijon, salt, and pepper; whisk to combine the dressing.",
+    "Wash and dry the fresh produce. (Skip the spinach if it came pre-washed.)",
+    "Quarter oranges; peel and slice the quarters into wedges.",
+    "To serve, divide the quinoa and spinach between plates or bowls; top with orange wedges, blueberries, and sliced almonds. Drizzle with dressing and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/967/presentation_373a1e97-7840-4d54-ada1-1868a676a1c0.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "quinoa-orange-blueberry-breakfast-salad-almonds"
+}

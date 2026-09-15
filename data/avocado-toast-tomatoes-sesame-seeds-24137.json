@@ -1,0 +1,36 @@
+{
+  "source_url": "https://www.mealime.com/recipes/avocado-toast-tomatoes-sesame-seeds/24137",
+  "recipe_id": "24137",
+  "name": "Avocado Toast with Tomatoes & Sesame Seeds",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT10M",
+  "total_time": "PT10M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 avocados",
+    "1 pint grape tomatoes",
+    "4 slices whole grain bread",
+    "black pepper",
+    "cumin, ground",
+    "garlic powder",
+    "onion powder",
+    "salt",
+    "sesame seeds"
+  ],
+  "instructions": [
+    "Preheat oven to broil on high and position rack in the upper third of the oven. (Skip this step if you are using a toaster for the bread.)",
+    "Arrange bread on a baking sheet pan. Place in the oven and broil, flipping halfway through, until toasted, about 2 minutes; remove from oven. (Alternatively, you can use a toaster.)",
+    "Meanwhile, wash, dry, halve, and pit avocados; using a spoon, scoop out the flesh and place in a medium bowl. Mash with a fork or potato masher until smooth.",
+    "Add spices to the bowl with the avocado, then mash once more to combine the spread. Set aside.",
+    "Wash, dry, and halve tomatoes lengthwise. ",
+    "Divide avocado spread between toast slices and smooth out in an even layer; top with tomatoes.",
+    "To serve, divide avocado toast between plates; sprinkle with sesame seeds and additional salt. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe_variant/thumbnail/24137/presentation_773cbf88-efab-43c0-a6a4-a41ebc592db0.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "avocado-toast-tomatoes-sesame-seeds"
+}

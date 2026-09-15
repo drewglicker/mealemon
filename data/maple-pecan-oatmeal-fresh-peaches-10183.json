@@ -1,0 +1,31 @@
+{
+  "source_url": "https://www.mealime.com/recipes/maple-pecan-oatmeal-fresh-peaches/10183",
+  "recipe_id": "10183",
+  "name": "Maple-Pecan Oatmeal with Fresh Peaches",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT12M",
+  "total_time": "PT12M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 peaches",
+    "⅔ cup pecan halves",
+    "8 fl oz whole milk",
+    "oats, quick cooking",
+    "pure maple syrup",
+    "salt"
+  ],
+  "instructions": [
+    "Place water and salt in a medium saucepan, cover, and bring to a boil over high heat. ",
+    "Once boiling, stir in oats and maple syrup. Cover and let simmer, on low, 3-5 minutes, or until oats reach desired consistency. ",
+    "Meanwhile, wash, halve and pit peaches, then medium dice.",
+    "Roughly chop pecans.",
+    "To serve, divide oats between bowls and top with peaches, pecans, and maple syrup. Serve with milk and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/1180/presentation_20164be2-b6fe-41a5-9466-ac144844d9df.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "maple-pecan-oatmeal-fresh-peaches"
+}

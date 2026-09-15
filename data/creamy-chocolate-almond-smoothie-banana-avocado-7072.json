@@ -1,0 +1,34 @@
+{
+  "source_url": "https://www.mealime.com/recipes/creamy-chocolate-almond-smoothie-banana-avocado/7072",
+  "recipe_id": "7072",
+  "name": "Creamy Chocolate Almond Smoothie with Banana & Avocado",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT10M",
+  "total_time": "PT10M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "24 fl oz almond milk, unsweetened",
+    "1 avocado",
+    "6 bananas",
+    "cinnamon, ground",
+    "cocoa powder",
+    "natural almond butter",
+    "pure maple syrup",
+    "salt"
+  ],
+  "instructions": [
+    "This recipe will make about 8 cups. Work in batches to best fit your blender.",
+    "Peel bananas, break into chunks, and add to blender.",
+    "Wash, halve, and pit avocado; add to blender.",
+    "Add almond butter, cocoa powder, almond milk, maple syrup, cinnamon, salt, and 8 ice cubes to the blender.",
+    "Blend on high speed for several minutes until smooth.",
+    "Pour the smoothie into glasses and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/807/presentation_d1eb6cc9-2021-4183-9c4f-52f3a645d75c.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "creamy-chocolate-almond-smoothie-banana-avocado"
+}

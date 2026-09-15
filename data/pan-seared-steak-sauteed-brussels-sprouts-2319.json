@@ -1,0 +1,40 @@
+{
+  "source_url": "https://www.mealime.com/recipes/pan-seared-steak-sauteed-brussels-sprouts/2319",
+  "recipe_id": "2319",
+  "name": "Pan-Seared Steak with Sautéed Brussels Sprouts",
+  "recipe_category": "Dinner",
+  "recipe_cuisine": "",
+  "keywords": [
+    "Steaks"
+  ],
+  "cook_time": "PT40M",
+  "total_time": "PT40M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 lb Brussels sprouts",
+    "4 cloves garlic",
+    "1 ½ lb ribeye steak",
+    "2 shallots",
+    "balsamic vinegar",
+    "black pepper",
+    "butter, unsalted",
+    "salt",
+    "virgin coconut oil"
+  ],
+  "instructions": [
+    "Wash sprouts, trim rough ends and halve lengthwise. Transfer to a bowl and set aside.",
+    "Heat a skillet over medium-high heat.",
+    "Season steak generously with salt and pepper.",
+    "Coat bottom of skillet with oil. Place steak in skillet and cook until desired doneness, 2-5 minutes per side. Transfer to a plate and loosely cover with foil; set aside.",
+    "Peel and thinly slice shallots. Peel and mince garlic.",
+    "Once steak has been transferred, melt butter in skillet. Add brussels sprouts, shallots, and garlic. Cook, stirring occasionally, until sprouts are browned, 4-5 minutes.",
+    "Add 1 cup water to sprouts and bring to a simmer. Cook, stirring occasionally, until the sprouts are tender and liquid has evaporated, 4-5 minutes.",
+    "Drizzle with vinegar and season with salt and pepper. Cook, stirring occasionally, for another 1-2 minutes.",
+    "Serve steak with brussels sprouts on a plate. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/260/presentation_59f92a46-8501-451f-a3e6-8f7693b30bb6.jpg"
+  ],
+  "author": "Mealime",
+  "slug": "pan-seared-steak-sauteed-brussels-sprouts"
+}

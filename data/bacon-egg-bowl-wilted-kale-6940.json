@@ -1,0 +1,37 @@
+{
+  "source_url": "https://www.mealime.com/recipes/bacon-egg-bowl-wilted-kale/6940",
+  "recipe_id": "6940",
+  "name": "Bacon & Egg Bowl with Wilted Kale",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT20M",
+  "total_time": "PT20M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "12 slices bacon",
+    "8 eggs",
+    "2 cloves garlic",
+    "1 bunch kale",
+    "black pepper",
+    "butter, unsalted",
+    "crushed red pepper",
+    "salt"
+  ],
+  "instructions": [
+    "Wash kale, fold leaves in half lengthwise, and slice off the stems. Chop or tear leaves into bite-sized pieces and set aside. ",
+    "Preheat a stainless steel or cast iron skillet over medium-high heat.",
+    "Chop bacon into 1-inch pieces; add to the skillet and cook until crispy, 4-5 minutes. ",
+    "Meanwhile, peel and mince garlic.",
+    "Once bacon is cooked, tilt the skillet and use a spoon to remove and discard half of the bacon drippings. ",
+    "Add kale, crushed red pepper, garlic, salt, and pepper to the skillet. Cook, stirring occasionaly, until kale is wilted, 2-3 minutes.  ",
+    "Place a non-stick skillet over medium-high heat and add butter. ",
+    "Once the butter begins to bubble, gently crack the eggs into the skillet. Cook until the tops of the whites are set but the yolks are still runny, 3-4 minutes. Cook in batches if necessary. ",
+    "To serve, arrange kale, bacon, and eggs in bowls. Season with salt and pepper and enjoy! "
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/787/presentation_ea12ae2f-ded2-44cf-85dd-17a0be2e268c.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "bacon-egg-bowl-wilted-kale"
+}

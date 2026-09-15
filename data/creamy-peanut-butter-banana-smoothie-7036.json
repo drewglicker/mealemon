@@ -1,0 +1,30 @@
+{
+  "source_url": "https://www.mealime.com/recipes/creamy-peanut-butter-banana-smoothie/7036",
+  "recipe_id": "7036",
+  "name": "Creamy Peanut Butter & Banana Smoothie",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT5M",
+  "total_time": "PT5M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "24 fl oz almond milk, unsweetened",
+    "4 bananas",
+    "1 cup plain Greek yogurt",
+    "cinnamon, ground",
+    "natural peanut butter"
+  ],
+  "instructions": [
+    "This recipe will make about 8 cups. Work in batches to best fit your blender.",
+    "Peel the bananas and add to the blender.",
+    "Add yogurt, almond milk, peanut butter, cinnamon, and 8 ice cubes to the blender.",
+    "Blend on high speed for several minutes until smooth.",
+    "Pour the smoothie into glasses and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/801/presentation_5c2b4bf7-4f16-417e-bc25-c57a194ba2aa.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "creamy-peanut-butter-banana-smoothie"
+}

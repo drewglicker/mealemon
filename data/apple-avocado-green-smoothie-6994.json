@@ -1,0 +1,35 @@
+{
+  "source_url": "https://www.mealime.com/recipes/apple-avocado-green-smoothie/6994",
+  "recipe_id": "6994",
+  "name": "Apple Avocado Green Smoothie",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT5M",
+  "total_time": "PT5M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "16 fl oz almond milk, unsweetened",
+    "1 avocado",
+    "2 (5 oz) pkgs baby spinach",
+    "2 bananas",
+    "4 Gala apples",
+    "½ (1 inch) piece ginger root",
+    "pure maple syrup"
+  ],
+  "instructions": [
+    "This recipe will make about 8 cups. Work in batches to best fit your blender.",
+    "Wash and dry the fresh produce. (Skip the spinach if it came pre-washed.)",
+    "Peel and quarter apples, removing seeds and stem; peel the bananas. Add both to blender.",
+    "Wash, dry, peel, and slice ginger. (If you have a high powered blender, you can put the chunk in whole).",
+    "Halve and pit the avocados. Using a spoon, scoop the flesh into the blender.",
+    "Add spinach, almond milk, maple syrup, and 8 ice cubes to the blender.",
+    "Blend on high speed for several minutes until smooth.",
+    "Pour the smoothie into glasses and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/795/presentation_c8f6ab17-c10f-47f5-8ffd-434abc4a5f56.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "apple-avocado-green-smoothie"
+}

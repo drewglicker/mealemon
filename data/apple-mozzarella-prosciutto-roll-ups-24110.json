@@ -1,0 +1,28 @@
+{
+  "source_url": "https://www.mealime.com/recipes/apple-mozzarella-prosciutto-roll-ups/24110",
+  "recipe_id": "24110",
+  "name": "Apple, Mozzarella & Prosciutto Roll-Ups",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 Gala apples",
+    "½ (8 oz) block mozzarella cheese",
+    "8 slices prosciutto"
+  ],
+  "instructions": [
+    "Wash, dry, quarter, and core apples. Slice each apple into 8 wedges.",
+    "Thinly slice cheese into 16 pieces.",
+    "Cut or tear prosciutto pieces in half lengthwise into 16 strips.",
+    "Place one apple wedge and one slice of cheese at the end of each strip of prosciutto, then roll up.",
+    "To serve, divide roll-ups between plates. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/2698/presentation_d11564e3-ccf7-4492-9450-4589b32c9994.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "apple-mozzarella-prosciutto-roll-ups"
+}

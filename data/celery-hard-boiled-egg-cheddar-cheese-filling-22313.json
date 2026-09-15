@@ -1,0 +1,35 @@
+{
+  "source_url": "https://www.mealime.com/recipes/celery-hard-boiled-egg-cheddar-cheese-filling/22313",
+  "recipe_id": "22313",
+  "name": "Celery with Hard-Boiled Egg & Cheddar Cheese Filling",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT15M",
+  "total_time": "PT15M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "8 sticks celery",
+    "¼ (8 oz) block cheddar cheese",
+    "6 hard-cooked eggs, peeled",
+    "black pepper",
+    "garlic powder",
+    "mayonnaise",
+    "onion powder",
+    "paprika",
+    "salt"
+  ],
+  "instructions": [
+    "Place mayo and spices in a medium bowl. Stir to combine the dressing.",
+    "Using a box grater, coarsely grate eggs. Add to the bowl with the dressing.",
+    "Coarsely grate cheese. Add to the bowl, stir to combine the filling, and set aside.",
+    "Wash, dry, and trim celery, then cut crosswise into 4-inch long sticks.",
+    "Stuff celery sticks with the filling.",
+    "To serve, divide stuffed celery sticks between plates. Sprinkle with paprika and enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/2530/presentation_853d0cab-f010-4e3e-9ca4-c4e0a5d219df.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "celery-hard-boiled-egg-cheddar-cheese-filling"
+}

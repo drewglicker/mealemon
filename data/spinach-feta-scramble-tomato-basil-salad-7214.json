@@ -1,0 +1,36 @@
+{
+  "source_url": "https://www.mealime.com/recipes/spinach-feta-scramble-tomato-basil-salad/7214",
+  "recipe_id": "7214",
+  "name": "Spinach Feta Scramble with Tomato Basil Salad",
+  "recipe_category": "Breakfast",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT17M",
+  "total_time": "PT17M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "1 (5 oz) pkg baby spinach",
+    "1 (4 oz) pkg crumbled feta cheese",
+    "8 eggs",
+    "1 small pkg fresh basil",
+    "4 tomatoes",
+    "black pepper",
+    "extra virgin olive oil",
+    "salt"
+  ],
+  "instructions": [
+    "Wash and dry tomatoes; slice into wedges and place in a medium bowl with oil, salt, and pepper.",
+    "Wash and dry the basil; pick the leaves off the stems and slice into ribbons. Add to the bowl with the tomatoes and toss gently to combine the salad; set aside. ",
+    "Crack the eggs into a medium bowl and season with pepper; whisk together.",
+    "Preheat a large nonstick skillet over medium heat.",
+    "Add spinach and feta to eggs and stir gently to combine.",
+    "Add oil to the skillet and swirl to coat the bottom.",
+    "Pour the egg mixture into the skillet. Scramble the eggs using a combination of stirring and flipping, making sure to bring in all the mixture from the edges of the pan. Cook until the eggs are no longer runny.",
+    "To serve, divide eggs and tomato salad between plates. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/829/presentation_c643f31d-d56f-4f26-a2ec-6264cc13de59.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "spinach-feta-scramble-tomato-basil-salad"
+}

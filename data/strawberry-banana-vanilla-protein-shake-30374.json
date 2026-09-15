@@ -1,0 +1,32 @@
+{
+  "source_url": "https://www.mealime.com/recipes/strawberry-banana-vanilla-protein-shake/30374",
+  "recipe_id": "30374",
+  "name": "Strawberry-Banana Vanilla Protein Shake",
+  "recipe_category": "Snack",
+  "recipe_cuisine": "",
+  "keywords": [],
+  "cook_time": "PT7M",
+  "total_time": "PT7M",
+  "recipe_yield": "4 servings",
+  "ingredients": [
+    "2 bananas",
+    "1 cup plain Greek yogurt",
+    "1 (16 oz) pkg strawberries",
+    "16 fl oz whole milk",
+    "pure maple syrup",
+    "vanilla extract",
+    "vanilla whey-based protein powder (containing 20 grams protein/serving)"
+  ],
+  "instructions": [
+    "Not all protein powders are created equal. If desired, adjust shake consistency by adding more or less liquid per package instructions. This recipe will make about 8 cups of shake. Work in batches to best fit your blender.",
+    "Wash, dry, and trim strawberries. Place in a blender.",
+    "Peel bananas, break into chunks, and add to the blender.",
+    "Add milk, yogurt, protein powder, maple syrup, and vanilla to the blender. Blend on high speed for several minutes until smooth.",
+    "To serve, divide shake between glasses, adding ice if desired. Enjoy!"
+  ],
+  "images": [
+    "https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/3385/presentation_d1da5b6f-9766-4aed-a3e1-7f521fa8d3cc.jpeg"
+  ],
+  "author": "Mealime",
+  "slug": "strawberry-banana-vanilla-protein-shake"
+}
