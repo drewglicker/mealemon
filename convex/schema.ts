@@ -78,7 +78,19 @@ export default defineSchema({
     aggregatedQuantity: v.number(),
     unit: v.string(),
     isChecked: v.boolean(),
+    // Optional user-chosen substitute for this shopping-list line (e.g. "out
+    // of buttermilk, using milk + lemon juice instead"). Purely a display
+    // override; does not change the underlying ingredient/aggregation.
+    substituteNote: v.optional(v.string()),
   })
     .index('by_mealPlanId', ['mealPlanId'])
     .index('by_mealPlanId_department', ['mealPlanId', 'department']),
+
+  // Curated ingredient-substitution reference data (seeded from common
+  // cooking substitution guides), keyed to the master ingredients taxonomy.
+  ingredientSubstitutes: defineTable({
+    ingredientId: v.id('ingredients'),
+    substituteName: v.string(),
+    ratio: v.optional(v.string()),
+  }).index('by_ingredientId', ['ingredientId']),
 })

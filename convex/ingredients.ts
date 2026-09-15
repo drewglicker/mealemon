@@ -10,3 +10,10 @@ export const search = query({
     return all.filter((i) => i.canonicalName.toLowerCase().includes(q)).slice(0, 20)
   },
 })
+
+export const listAll = query({
+  args: {},
+  handler: async (ctx) => {
+    return await ctx.db.query('ingredients').collect()
+  },
+})

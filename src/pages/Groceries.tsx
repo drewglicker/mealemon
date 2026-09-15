@@ -104,8 +104,13 @@ export default function Groceries() {
                     >
                       ✓
                     </button>
-                    <div className={`min-w-0 flex-1 truncate text-[17px] capitalize text-[#1c1b18] ${item.isChecked ? 'line-through' : ''}`}>
-                      {label}
+                    <div className="min-w-0 flex-1">
+                      <div className={`truncate text-[17px] capitalize text-[#1c1b18] ${item.isChecked ? 'line-through' : ''}`}>
+                        {label}
+                      </div>
+                      {item.substituteNote && (
+                        <div className="truncate text-xs font-medium text-[#8a6a12]">using {item.substituteNote}</div>
+                      )}
                     </div>
                     <div className={`shrink-0 whitespace-nowrap text-base text-[#9a968a] ${item.isChecked ? 'line-through' : ''}`}>
                       {qtyLabel}
@@ -141,6 +146,12 @@ function ItemInspector({ item, mealPlanId, onClose }: { item: any; mealPlanId: I
     api.groceries.recipesUsingIngredient,
     item.ingredientId ? { mealPlanId, ingredientId: item.ingredientId } : 'skip',
   )
+  const substitutes = useQuery(
+    api.substitutes.forIngredient,
+    item.ingredientId ? { ingredientId: item.ingredientId } : 'skip',
+  )
+  const setSubstituteNote = useMutation(api.groceries.setSubstituteNote)
+
   const label = item.ingredient?.canonicalName ?? item.customName ?? 'Item'
   const tone = departmentTone(item.department)
   const bucket = bucketForUnit(item.unit)
@@ -149,10 +160,10 @@ function ItemInspector({ item, mealPlanId, onClose }: { item: any; mealPlanId: I
   return (
     <div className="fixed inset-0 z-20 flex items-end bg-[rgba(28,27,24,0.42)]" onClick={onClose}>
       <div
-        className="flex w-full flex-col gap-4.5 rounded-t-[26px] bg-[#fffefb] px-5 pb-8 pt-3 shadow-[0_-20px_40px_-20px_rgba(28,27,24,0.35)]"
+        className="flex max-h-[85vh] w-full flex-col gap-4.5 overflow-y-auto rounded-t-[26px] bg-[#fffefb] px-5 pb-8 pt-3 shadow-[0_-20px_40px_-20px_rgba(28,27,24,0.35)]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="mx-auto h-[5px] w-10 rounded-full bg-[#e0dcd2]" />
+        <div className="mx-auto h-[5px] w-10 shrink-0 rounded-full bg-[#e0dcd2]" />
         <div className="flex items-start justify-between gap-3">
           <div className="flex flex-col gap-2">
             <h3 className="text-2xl font-semibold capitalize text-[#1c1b18]">{label}</h3>
@@ -162,6 +173,9 @@ function ItemInspector({ item, mealPlanId, onClose }: { item: any; mealPlanId: I
               </span>
               <span className="text-sm text-[#8b877c]">{qtyLabel} total</span>
             </div>
+            {item.substituteNote && (
+              <span className="text-xs font-medium text-[#8a6a12]">Currently using: {item.substituteNote}</span>
+            )}
           </div>
           <button onClick={onClose} className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-[#f4f2ec] text-[15px] text-[#5c584e]">
             ✕
@@ -183,6 +197,36 @@ function ItemInspector({ item, mealPlanId, onClose }: { item: any; mealPlanId: I
             </div>
           ))}
         </div>
+
+        {substitutes && substitutes.length > 0 && (
+          <div className="flex flex-col gap-2.5">
+            <div className="text-[13px] font-bold uppercase tracking-[0.1em] text-[#8b877c]">Need a substitute?</div>
+            <div className="flex flex-col gap-2">
+              {substitutes.map((s: any) => {
+                const active = item.substituteNote === s.substituteName
+                return (
+                  <div
+                    key={s._id}
+                    className="flex items-center justify-between gap-3 rounded-2xl border border-[#eae7de] px-3.5 py-2.5"
+                  >
+                    <div className="flex min-w-0 flex-col">
+                      <span className="truncate text-[15px] text-[#1c1b18]">{s.substituteName}</span>
+                      {s.ratio && <span className="truncate text-xs text-[#9a968a]">{s.ratio}</span>}
+                    </div>
+                    <button
+                      onClick={() => setSubstituteNote({ itemId: item._id, substituteName: active ? null : s.substituteName })}
+                      className={`h-9 flex-none rounded-xl px-3.5 text-[13px] font-semibold ${
+                        active ? 'bg-[#1c1b18] text-[#fffefb]' : 'bg-lemon-100 text-[#5a4a16]'
+                      }`}
+                    >
+                      {active ? 'Using' : 'Use this'}
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

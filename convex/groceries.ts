@@ -138,6 +138,16 @@ export const clearChecked = mutation({
   },
 })
 
+/** Sets or clears (pass null) a display-only substitute note on a grocery
+ * line item, e.g. "using apple cider vinegar instead". Does not touch the
+ * underlying ingredientId/aggregation. */
+export const setSubstituteNote = mutation({
+  args: { itemId: v.id('groceryItems'), substituteName: v.union(v.string(), v.null()) },
+  handler: async (ctx, { itemId, substituteName }) => {
+    await ctx.db.patch(itemId, { substituteNote: substituteName ?? undefined })
+  },
+})
+
 /** For the line-item inspector: which active-plan recipes use this ingredient. */
 export const recipesUsingIngredient = query({
   args: { mealPlanId: v.id('mealPlans'), ingredientId: v.id('ingredients') },
