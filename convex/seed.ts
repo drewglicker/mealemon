@@ -1,4 +1,4 @@
-import { internalMutation } from './_generated/server'
+import { mutation } from './_generated/server'
 import { v } from 'convex/values'
 import type { Id } from './_generated/dataModel'
 
@@ -20,7 +20,7 @@ const unitValidator = v.union(
 )
 
 /** Idempotent upsert of a master ingredient taxonomy entry by canonicalName. */
-export const upsertIngredient = internalMutation({
+export const upsertIngredient = mutation({
   args: {
     canonicalName: v.string(),
     department: departmentValidator,
@@ -38,7 +38,7 @@ export const upsertIngredient = internalMutation({
 
 /** Replaces a recipe (and its ingredients/steps) identified by slug, so the
  * seed script can be re-run safely against updated ./data/*.json files. */
-export const upsertRecipeWithDetails = internalMutation({
+export const upsertRecipeWithDetails = mutation({
   args: {
     recipe: v.object({
       slug: v.string(),
