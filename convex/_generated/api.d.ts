@@ -13,6 +13,7 @@ import type * as ingredients from "../ingredients.js";
 import type * as mealPlans from "../mealPlans.js";
 import type * as recipes from "../recipes.js";
 import type * as seed from "../seed.js";
+import type * as substitutes from "../substitutes.js";
 
 import type {
   ApiFromModules,
@@ -26,6 +27,7 @@ declare const fullApi: ApiFromModules<{
   mealPlans: typeof mealPlans;
   recipes: typeof recipes;
   seed: typeof seed;
+  substitutes: typeof substitutes;
 }>;
 
 /**
