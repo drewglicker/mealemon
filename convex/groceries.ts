@@ -125,6 +125,19 @@ export const toggleChecked = mutation({
   },
 })
 
+export const clearChecked = mutation({
+  args: { mealPlanId: v.id('mealPlans') },
+  handler: async (ctx, { mealPlanId }) => {
+    const items = await ctx.db
+      .query('groceryItems')
+      .withIndex('by_mealPlanId', (q) => q.eq('mealPlanId', mealPlanId))
+      .collect()
+    for (const item of items) {
+      if (item.isChecked) await ctx.db.delete(item._id)
+    }
+  },
+})
+
 /** For the line-item inspector: which active-plan recipes use this ingredient. */
 export const recipesUsingIngredient = query({
   args: { mealPlanId: v.id('mealPlans'), ingredientId: v.id('ingredients') },

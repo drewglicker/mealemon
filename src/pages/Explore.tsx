@@ -2,92 +2,115 @@ import { useState } from 'react'
 import { useQuery, useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import { Link } from 'react-router-dom'
-import { Search, Plus, Clock } from 'lucide-react'
 import type { Id } from '../../convex/_generated/dataModel'
+import { dietaryTagTone } from '../lib/departmentTheme'
 
-const DIETARY_TAGS = ['Vegetarian', 'Gluten-Free', 'Dairy-Free', 'Low Carb']
+const FILTERS = ['All', 'Vegetarian', 'Gluten-Free', 'Low Carb', 'Dairy-Free']
 
 export default function Explore() {
   const [search, setSearch] = useState('')
-  const [activeTags, setActiveTags] = useState<string[]>([])
+  const [filter, setFilter] = useState('All')
 
+  const activeTags = filter === 'All' ? [] : [filter]
   const recipes = useQuery(api.recipes.list, { search, dietaryFlags: activeTags })
   const addToPlan = useMutation(api.mealPlans.addRecipeToPlan)
+  const [added, setAdded] = useState<Record<string, boolean>>({})
 
-  function toggleTag(tag: string) {
-    setActiveTags((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]))
+  async function handleAdd(recipeId: Id<'recipes'>) {
+    await addToPlan({ recipeId })
+    setAdded((prev) => ({ ...prev, [recipeId]: !prev[recipeId] }))
   }
 
   return (
-    <div className="flex flex-col gap-4 p-4 pb-6">
-      <h1 className="text-2xl font-bold text-gray-900">Explore</h1>
+    <div className="flex flex-col gap-3.5 pb-28">
+      <div className="flex flex-col gap-3.5 border-b border-[#edeae1] px-5 pb-3 pt-2">
+        <div className="flex items-center justify-between">
+          <h1 className="font-serif text-[30px] leading-none text-[#1c1b18]">Mealemon</h1>
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-lemon-100 text-[15px] font-semibold text-link">
+            D
+          </div>
+        </div>
 
-      <div className="relative">
-        <Search size={18} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-        <input
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search recipes..."
-          className="w-full rounded-xl border border-gray-200 bg-gray-50 py-2.5 pl-10 pr-3 text-sm outline-none focus:border-lemon-400 focus:ring-2 focus:ring-lemon-100"
-        />
+        <div className="flex h-11 items-center gap-2.5 rounded-2xl border border-[#e8e5dc] bg-[#f4f2ec] px-3.5">
+          <span className="h-3.5 w-3.5 shrink-0 rounded-full border-2 border-[#9a968a]" />
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search recipes, ingredients"
+            className="w-full bg-transparent text-[15px] text-[#1c1b18] placeholder:text-[#9a968a] outline-none"
+          />
+        </div>
+
+        <div className="-mb-0.5 flex gap-2 overflow-x-auto pb-0.5">
+          {FILTERS.map((f) => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className={`h-[38px] shrink-0 whitespace-nowrap rounded-full px-4 text-sm font-semibold ${
+                filter === f
+                  ? 'border border-[#1c1b18] bg-[#1c1b18] text-[#fffefb]'
+                  : 'border border-[#e4e1d8] bg-[#fffefb] text-[#5c584e]'
+              }`}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {DIETARY_TAGS.map((tag) => (
-          <button
-            key={tag}
-            onClick={() => toggleTag(tag)}
-            className={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${
-              activeTags.includes(tag)
-                ? 'border-lemon-500 bg-lemon-100 text-lemon-700'
-                : 'border-gray-200 text-gray-500'
-            }`}
-          >
-            {tag}
-          </button>
-        ))}
-      </div>
-
-      {recipes === undefined && <p className="py-8 text-center text-sm text-gray-400">Loading recipes…</p>}
+      {recipes === undefined && <p className="px-5 py-8 text-center text-sm text-[#9a968a]">Loading recipes…</p>}
       {recipes && recipes.length === 0 && (
-        <p className="py-8 text-center text-sm text-gray-400">No recipes match your filters.</p>
+        <p className="px-5 py-8 text-center text-sm text-[#9a968a]">No recipes match your filters.</p>
       )}
 
-      <div className="flex flex-col gap-3">
-        {recipes?.map((recipe) => (
-          <div key={recipe._id} className="relative overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
-            <Link to={`/recipe/${recipe.slug}`} className="flex gap-3 p-3">
-              <img
-                src={recipe.images[0]}
-                alt={recipe.name}
-                className="h-20 w-20 shrink-0 rounded-xl bg-gray-100 object-cover"
-              />
-              <div className="flex min-w-0 flex-1 flex-col justify-between">
-                <div>
-                  <h2 className="line-clamp-2 text-sm font-semibold text-gray-900">{recipe.name}</h2>
-                  <div className="mt-1 flex items-center gap-1 text-xs text-gray-400">
-                    <Clock size={12} />
+      <div className="flex flex-col gap-[22px] px-5">
+        {recipes?.map((recipe) => {
+          const isAdded = !!added[recipe._id]
+          return (
+            <div key={recipe._id} className="flex flex-col gap-3">
+              <Link to={`/recipe/${recipe.slug}`} className="block">
+                <div
+                  className="relative h-[196px] overflow-hidden rounded-[20px] bg-cover bg-center"
+                  style={{
+                    backgroundImage: recipe.images[0] ? `url(${recipe.images[0]})` : undefined,
+                    backgroundColor: '#efece4',
+                  }}
+                >
+                  <span className="absolute left-3 top-3 rounded-full bg-[rgba(28,27,24,0.82)] px-2.5 py-1.5 text-xs font-semibold text-[#fffefb]">
                     {formatDuration(recipe.totalTime)}
-                  </div>
+                  </span>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleAdd(recipe._id)
+                    }}
+                    className={`absolute bottom-3 right-3 flex h-12 w-12 items-center justify-center rounded-full text-[22px] shadow-[0_8px_18px_-6px_rgba(28,27,24,0.4)] ${
+                      isAdded ? 'bg-[#1c1b18] text-lemon-500' : 'bg-lemon-500 text-[#1c1b18]'
+                    }`}
+                    aria-label="Add to meal plan"
+                  >
+                    {isAdded ? '✓' : '+'}
+                  </button>
                 </div>
-                <div className="flex flex-wrap gap-1">
-                  {recipe.dietaryFlags.slice(0, 2).map((f: string) => (
-                    <span key={f} className="rounded-full bg-lemon-50 px-2 py-0.5 text-[10px] font-medium text-lemon-700">
-                      {f}
-                    </span>
-                  ))}
+              </Link>
+              <div className="flex flex-col gap-2">
+                <Link to={`/recipe/${recipe.slug}`} className="text-[19px] font-semibold leading-[1.25] text-[#1c1b18]">
+                  {recipe.name}
+                </Link>
+                <div className="flex flex-wrap gap-1.5">
+                  {recipe.dietaryFlags.slice(0, 3).map((flag: string) => {
+                    const tone = dietaryTagTone(flag)
+                    return (
+                      <span key={flag} className={`rounded-lg px-2.5 py-1 text-xs font-semibold ${tone.bg} ${tone.text}`}>
+                        {flag}
+                      </span>
+                    )
+                  })}
                 </div>
               </div>
-            </Link>
-            <button
-              onClick={() => addToPlan({ recipeId: recipe._id as Id<'recipes'> })}
-              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-lemon-500 text-white shadow"
-              aria-label="Add to meal plan"
-            >
-              <Plus size={18} />
-            </button>
-          </div>
-        ))}
+            </div>
+          )
+        })}
       </div>
     </div>
   )

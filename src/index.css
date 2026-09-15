@@ -1,13 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  --color-lemon-50: #fefce8;
-  --color-lemon-100: #fef9c3;
-  --color-lemon-200: #fef08a;
-  --color-lemon-300: #fde047;
-  --color-lemon-400: #facc15;
-  --color-lemon-500: #eab308;
-  --color-lemon-600: #ca8a04;
+  --font-sans: 'Instrument Sans', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+
+  /* Mealemon design system (from Claude Design canvas) */
+  --color-cream: #f2f0ea;
+  --color-surface: #fffefb;
+  --color-ink: #1c1b18;
+  --color-muted-1: #8b877c;
+  --color-muted-2: #9a968a;
+  --color-muted-3: #6d6a61;
+  --color-muted-4: #5c584e;
+  --color-muted-5: #7a776d;
+  --color-border-1: #e4e1d8;
+  --color-border-2: #edeae1;
+  --color-border-3: #e9e6dd;
+  --color-border-4: #f0ede5;
+  --color-border-5: #eae7de;
+  --color-border-6: #e8e5dc;
+  --color-chip: #f4f2ec;
+
+  --color-lemon-500: #edc23f;
+  --color-lemon-100: #fdf2cd;
+  --color-lemon-50: #fdf6de;
+  --color-lemon-border: #f0e2ad;
+  --color-link: #8a6a12;
+  --color-link-hover: #5e4708;
+
+  /* department accent tones */
+  --color-dept-produce-bg: #e4ecdf;
+  --color-dept-produce-text: #3f5c44;
+  --color-dept-meat-bg: #f5e3e2;
+  --color-dept-meat-text: #7e4a4d;
+  --color-dept-dairy-bg: #e5ebf2;
+  --color-dept-dairy-text: #3f5772;
+  --color-dept-baking-bg: #f3ecdc;
+  --color-dept-baking-text: #71592c;
+  --color-dept-other-bg: #efece4;
+  --color-dept-other-text: #5c584e;
 }
 
 html, body, #root {
@@ -17,4 +48,11 @@ html, body, #root {
 body {
   overscroll-behavior-y: none;
   -webkit-tap-highlight-color: transparent;
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }

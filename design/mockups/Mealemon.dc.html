@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#f2f0ea; font-family:'Instrument Sans',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:#8a6a12; } a:hover { color:#5e4708; }
+  ::-webkit-scrollbar { width:0; height:0; }
+</style>
+</helmet>
+<div style="padding:56px 48px 80px; display:flex; flex-direction:column; gap:40px; align-items:flex-start">
+
+  <div style="display:flex; align-items:flex-end; gap:28px; flex-wrap:wrap">
+    <div>
+      <div style="font-family:'Instrument Serif',Georgia,serif; font-size:52px; line-height:1; color:#1c1b18">Mealemon</div>
+      <div style="margin-top:10px; font-size:14px; letter-spacing:.14em; text-transform:uppercase; color:#8b877c">Mobile PWA — core screens</div>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center; padding-bottom:6px">
+      <div style="width:26px; height:26px; border-radius:8px; background:#edc23f"></div>
+      <div style="width:26px; height:26px; border-radius:8px; background:#fdf2cd"></div>
+      <div style="width:26px; height:26px; border-radius:8px; background:#e4ecdf"></div>
+      <div style="width:26px; height:26px; border-radius:8px; background:#f5e3e2"></div>
+      <div style="width:26px; height:26px; border-radius:8px; background:#f3ecdc"></div>
+      <div style="width:26px; height:26px; border-radius:8px; background:#e5ebf2"></div>
+      <div style="width:26px; height:26px; border-radius:8px; background:#1c1b18"></div>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:48px; align-items:flex-start; flex-wrap:wrap">
+
+    <!-- ========== 1. EXPLORE ========== -->
+    <div data-screen-label="01 Explore" style="display:flex; flex-direction:column; gap:14px">
+      <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#8b877c">01 — Explore &amp; Library</div>
+      <div style="width:390px; height:844px; background:#fffefb; border-radius:44px; box-shadow:0 30px 60px -20px rgba(28,27,24,.28), 0 0 0 1px #e4e1d8; overflow:hidden; display:flex; flex-direction:column; position:relative">
+        <div style="height:54px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 30px; font-size:15px; font-weight:600; color:#1c1b18">
+          <span>9:41</span>
+          <span style="font-size:12px; color:#1c1b18; letter-spacing:.08em">5G ▮▮▮</span>
+        </div>
+        <div style="flex:none; padding:8px 20px 12px; background:#fffefb; display:flex; flex-direction:column; gap:14px; border-bottom:1px solid #edeae1">
+          <div style="display:flex; align-items:center; justify-content:space-between">
+            <div style="font-family:'Instrument Serif',Georgia,serif; font-size:30px; line-height:1; color:#1c1b18">Mealemon</div>
+            <div style="width:36px; height:36px; border-radius:50%; background:#fdf2cd; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600; color:#8a6a12">D</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; height:44px; padding:0 14px; border-radius:14px; background:#f4f2ec; border:1px solid #e8e5dc">
+            <div style="width:14px; height:14px; border:2px solid #9a968a; border-radius:50%"></div>
+            <div style="font-size:15px; color:#9a968a">Search recipes, ingredients</div>
+          </div>
+          <div style="display:flex; gap:8px; overflow-x:auto; padding-bottom:2px">
+            <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+              <button onClick="{{ f.pick }}" style="{{ f.style }}">{{ f.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:18px 20px 110px; display:flex; flex-direction:column; gap:22px">
+          <sc-for list="{{ recipes }}" as="r" hint-placeholder-count="3">
+            <div style="display:flex; flex-direction:column; gap:12px">
+              <div style="position:relative; height:196px; border-radius:20px; overflow:hidden; background:repeating-linear-gradient(135deg,#efece4 0 10px,#e7e3d9 10px 20px); display:flex; align-items:center; justify-content:center">
+                <div style="font-family:ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:.1em; color:#8b877c; text-transform:uppercase">{{ r.photo }}</div>
+                <div style="position:absolute; left:12px; top:12px; padding:6px 11px; border-radius:999px; background:rgba(28,27,24,.82); color:#fffefb; font-size:12px; font-weight:600; letter-spacing:.02em">{{ r.time }}</div>
+                <button onClick="{{ r.add }}" style="{{ r.addStyle }}">{{ r.addGlyph }}</button>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:8px">
+                <div style="font-size:19px; font-weight:600; line-height:1.25; color:#1c1b18; text-wrap:pretty">{{ r.title }}</div>
+                <sc-if value="{{ showDietTags }}" hint-placeholder-val="{{ true }}">
+                  <div style="display:flex; gap:6px; flex-wrap:wrap">
+                    <sc-for list="{{ r.tags }}" as="t" hint-placeholder-count="2">
+                      <div style="{{ t.style }}">{{ t.label }}</div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="position:absolute; left:0; right:0; bottom:0; height:88px; background:rgba(255,254,251,.94); backdrop-filter:blur(12px); border-top:1px solid #e9e6dd; display:flex; padding:10px 12px 0">
+          <sc-for list="{{ navExplore }}" as="n" hint-placeholder-count="3">
+            <button onClick="{{ n.pick }}" style="{{ n.style }}">
+              <div style="{{ n.dotStyle }}"></div>
+              <div style="font-size:11px; font-weight:600; letter-spacing:.03em">{{ n.label }}</div>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 2. RECIPE DETAIL ========== -->
+    <div data-screen-label="02 Recipe detail" style="display:flex; flex-direction:column; gap:14px">
+      <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#8b877c">02 — Recipe detail</div>
+      <div style="width:390px; height:844px; background:#fffefb; border-radius:44px; box-shadow:0 30px 60px -20px rgba(28,27,24,.28), 0 0 0 1px #e4e1d8; overflow:hidden; display:flex; flex-direction:column; position:relative">
+        <div style="height:54px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 30px; font-size:15px; font-weight:600; color:#1c1b18">
+          <span>9:41</span><span style="font-size:12px; letter-spacing:.08em">5G ▮▮▮</span>
+        </div>
+        <div style="flex:none; padding:4px 16px 12px; display:flex; align-items:center; gap:10px; border-bottom:1px solid #edeae1">
+          <button style="width:44px; height:44px; flex:none; border:none; background:#f4f2ec; border-radius:14px; font-size:17px; color:#1c1b18; cursor:pointer">‹</button>
+          <div style="flex:1; min-width:0; font-size:15px; font-weight:600; color:#1c1b18; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">Striploin Steak &amp; Dill Potatoes</div>
+          <div style="flex:none; display:flex; padding:3px; gap:2px; background:#f4f2ec; border-radius:12px">
+            <sc-for list="{{ servingOptions }}" as="s" hint-placeholder-count="3">
+              <button onClick="{{ s.pick }}" style="{{ s.style }}">{{ s.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="flex:none; display:flex; padding:0 16px; gap:24px; border-bottom:1px solid #edeae1; background:#fffefb">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+            <button onClick="{{ t.pick }}" style="{{ t.style }}">{{ t.label }}</button>
+          </sc-for>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:6px 16px 120px">
+          <sc-if value="{{ isInstructions }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex; flex-direction:column">
+              <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+                <div style="display:flex; gap:14px; padding:20px 4px; border-bottom:1px solid #f0ede5">
+                  <div style="flex:none; width:26px; font-size:20px; font-weight:600; color:#d9cfa8; line-height:1.35">{{ st.n }}</div>
+                  <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:12px">
+                    <div style="font-size:17px; line-height:1.45; color:#1c1b18; text-wrap:pretty">{{ st.text }}</div>
+                    <sc-if value="{{ st.hasPills }}" hint-placeholder-val="{{ true }}">
+                      <div style="display:flex; flex-wrap:wrap; gap:6px">
+                        <sc-for list="{{ st.pills }}" as="p" hint-placeholder-count="3">
+                          <div style="display:flex; align-items:center; gap:6px; padding:7px 12px; border-radius:999px; background:#fdf6de; border:1px solid #f0e2ad; font-size:14px; color:#5a4a16">
+                            <span style="font-weight:600">{{ p.qty }}</span>
+                            <span>{{ p.name }}</span>
+                          </div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ isIngredients }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column">
+              <sc-for list="{{ ingredients }}" as="i" hint-placeholder-count="6">
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:17px 4px; border-bottom:1px solid #f0ede5">
+                  <div style="font-size:17px; color:#1c1b18">{{ i.name }}</div>
+                  <div style="font-size:17px; color:#8b877c; white-space:nowrap">{{ i.qty }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ isCookware }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column">
+              <sc-for list="{{ cookware }}" as="c" hint-placeholder-count="5">
+                <div style="padding:17px 4px; border-bottom:1px solid #f0ede5; font-size:17px; color:#1c1b18">{{ c.name }}</div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        <div style="position:absolute; left:0; right:0; bottom:0; padding:14px 16px 28px; background:rgba(255,254,251,.96); backdrop-filter:blur(12px); border-top:1px solid #e9e6dd; display:flex; gap:10px">
+          <button onClick="{{ toggleCooked }}" style="{{ cookedStyle }}">{{ cookedLabel }}</button>
+          <button style="flex:1; height:52px; border:none; border-radius:16px; background:#edc23f; color:#1c1b18; font-family:inherit; font-size:17px; font-weight:600; cursor:pointer">Start cooking</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 3. GROCERIES ========== -->
+    <div data-screen-label="03 Groceries" style="display:flex; flex-direction:column; gap:14px">
+      <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#8b877c">03 — Smart grocery list</div>
+      <div style="width:390px; height:844px; background:#fffefb; border-radius:44px; box-shadow:0 30px 60px -20px rgba(28,27,24,.28), 0 0 0 1px #e4e1d8; overflow:hidden; display:flex; flex-direction:column; position:relative">
+        <div style="height:54px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 30px; font-size:15px; font-weight:600; color:#1c1b18">
+          <span>9:41</span><span style="font-size:12px; letter-spacing:.08em">5G ▮▮▮</span>
+        </div>
+        <div style="flex:none; padding:6px 20px 14px; border-bottom:1px solid #edeae1; display:flex; align-items:flex-end; justify-content:space-between; gap:12px">
+          <div>
+            <div style="font-family:'Instrument Serif',Georgia,serif; font-size:32px; line-height:1.05; color:#1c1b18">Groceries</div>
+            <div style="margin-top:6px; font-size:14px; color:#8b877c">{{ remainingLabel }}</div>
+          </div>
+          <button onClick="{{ clearChecked }}" style="height:38px; padding:0 14px; border:1px solid #e4e1d8; background:#fffefb; border-radius:12px; font-family:inherit; font-size:13px; font-weight:600; color:#5c584e; cursor:pointer">Clear checked</button>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding-bottom:130px">
+          <sc-for list="{{ departments }}" as="d" hint-placeholder-count="3">
+            <div>
+              <div style="{{ d.headerStyle }}">
+                <div style="{{ d.dotStyle }}"></div>
+                <div style="font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#6d6a61">{{ d.name }}</div>
+              </div>
+              <sc-for list="{{ d.items }}" as="it" hint-placeholder-count="3">
+                <div onClick="{{ it.inspect }}" style="{{ it.rowStyle }}">
+                  <button onClick="{{ it.toggle }}" style="{{ it.boxStyle }}">{{ it.check }}</button>
+                  <div style="flex:1; min-width:0; display:flex; align-items:baseline; gap:10px">
+                    <div style="{{ it.nameStyle }}">{{ it.name }}</div>
+                  </div>
+                  <sc-if value="{{ showQuantities }}" hint-placeholder-val="{{ true }}">
+                    <div style="{{ it.qtyStyle }}">{{ it.qty }}</div>
+                  </sc-if>
+                  <div style="flex:none; font-size:15px; color:#c6c2b7">›</div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+        <button style="position:absolute; z-index:5; right:20px; bottom:112px; width:60px; height:60px; border-radius:50%; border:none; background:#edc23f; color:#1c1b18; font-size:28px; font-weight:400; line-height:1; cursor:pointer; box-shadow:0 12px 24px -8px rgba(151,116,13,.6)">+</button>
+        <div style="position:absolute; z-index:6; left:0; right:0; bottom:0; height:88px; background:rgba(255,254,251,.94); backdrop-filter:blur(12px); border-top:1px solid #e9e6dd; display:flex; padding:10px 12px 0">
+          <sc-for list="{{ navGroceries }}" as="n" hint-placeholder-count="3">
+            <button style="{{ n.style }}">
+              <div style="{{ n.dotStyle }}"></div>
+              <div style="font-size:11px; font-weight:600; letter-spacing:.03em">{{ n.label }}</div>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 4. INSPECTOR SHEET ========== -->
+    <div data-screen-label="04 Item inspector" style="display:flex; flex-direction:column; gap:14px">
+      <div style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#8b877c">04 — Line-item inspector</div>
+      <div style="width:390px; height:844px; background:#fffefb; border-radius:44px; box-shadow:0 30px 60px -20px rgba(28,27,24,.28), 0 0 0 1px #e4e1d8; overflow:hidden; display:flex; flex-direction:column; position:relative">
+        <div style="height:54px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:0 30px; font-size:15px; font-weight:600; color:#1c1b18">
+          <span>9:41</span><span style="font-size:12px; letter-spacing:.08em">5G ▮▮▮</span>
+        </div>
+        <div style="flex:none; padding:6px 20px 14px; border-bottom:1px solid #edeae1">
+          <div style="font-family:'Instrument Serif',Georgia,serif; font-size:32px; line-height:1.05; color:#1c1b18">Groceries</div>
+          <div style="margin-top:6px; font-size:14px; color:#8b877c">{{ remainingLabel }}</div>
+        </div>
+        <div style="flex:1; overflow:hidden">
+          <sc-for list="{{ backdropItems }}" as="b" hint-placeholder-count="5">
+            <div style="display:flex; align-items:center; gap:14px; padding:16px 20px; border-bottom:1px solid #f0ede5">
+              <div style="width:24px; height:24px; border-radius:50%; border:2px solid #d5d1c6"></div>
+              <div style="flex:1; font-size:17px; color:#1c1b18">{{ b.name }}</div>
+              <div style="font-size:16px; color:#9a968a">{{ b.qty }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="position:absolute; inset:0; background:rgba(28,27,24,.42)"></div>
+        <div style="position:absolute; left:0; right:0; bottom:0; background:#fffefb; border-radius:26px 26px 44px 44px; padding:12px 20px 30px; display:flex; flex-direction:column; gap:18px; box-shadow:0 -20px 40px -20px rgba(28,27,24,.35)">
+          <div style="width:40px; height:5px; border-radius:99px; background:#e0dcd2; align-self:center"></div>
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px">
+            <div style="display:flex; flex-direction:column; gap:8px">
+              <div style="font-size:24px; font-weight:600; color:#1c1b18">white wine vinegar</div>
+              <div style="display:flex; align-items:center; gap:8px">
+                <div style="padding:5px 11px; border-radius:999px; background:#f3ecdc; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#7d6438">Oils &amp; condiments</div>
+                <div style="font-size:14px; color:#8b877c">2 tbsp total</div>
+              </div>
+            </div>
+            <button style="width:36px; height:36px; flex:none; border:none; border-radius:50%; background:#f4f2ec; font-size:15px; color:#5c584e; cursor:pointer">✕</button>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px">
+            <div style="font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#8b877c">You'll use this in…</div>
+            <sc-for list="{{ usedIn }}" as="u" hint-placeholder-count="2">
+              <div style="display:flex; align-items:center; gap:12px; padding:10px; border:1px solid #eae7de; border-radius:16px; background:#fdfcf8">
+                <div style="width:52px; height:52px; flex:none; border-radius:12px; background:repeating-linear-gradient(135deg,#efece4 0 6px,#e7e3d9 6px 12px)"></div>
+                <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:3px">
+                  <div style="font-size:15px; font-weight:600; line-height:1.3; color:#1c1b18">{{ u.title }}</div>
+                  <div style="font-size:13px; color:#8b877c">{{ u.amount }}</div>
+                </div>
+                <div style="font-size:15px; color:#c6c2b7">›</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px">
+            <div style="font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#8b877c">Need a substitute?</div>
+            <div style="display:flex; flex-direction:column; gap:8px">
+              <sc-for list="{{ substitutes }}" as="s" hint-placeholder-count="3">
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; height:52px; padding:0 8px 0 14px; border:1px solid #eae7de; border-radius:14px">
+                  <div style="font-size:16px; color:#1c1b18">{{ s.name }}</div>
+                  <button onClick="{{ s.swap }}" style="{{ s.btnStyle }}">{{ s.btnLabel }}</button>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showDietTags&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showQuantities&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;defaultServings&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[2,4,6],&quot;default&quot;:2,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Recipe&quot;}}">
+class Component extends DCLogic {
+  state = {
+    filter: 'All',
+    tab: 'Instructions',
+    servings: null,
+    cooked: false,
+    checked: {},
+    added: {},
+    swapped: null,
+    nav: 'Explore'
+  };
+
+  fmt(n) {
+    const whole = Math.floor(n + 1e-6);
+    const frac = n - whole;
+    const map = [[0.25,'¼'],[0.3333,'⅓'],[0.5,'½'],[0.6667,'⅔'],[0.75,'¾']];
+    let f = '';
+    for (const [v, s] of map) if (Math.abs(frac - v) < 0.03) f = s;
+    if (whole && f) return whole + f;
+    if (f) return f;
+    return String(whole || Number(n.toFixed(2)));
+  }
+
+  pill(active) {
+    return 'flex:none;height:38px;padding:0 16px;border-radius:999px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;' +
+      (active
+        ? 'background:#1c1b18;color:#fffefb;border:1px solid #1c1b18;'
+        : 'background:#fffefb;color:#5c584e;border:1px solid #e4e1d8;');
+  }
+
+  navItem(active) {
+    return 'flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;border:none;background:transparent;font-family:inherit;cursor:pointer;padding:6px 0;color:' + (active ? '#1c1b18' : '#9a968a') + ';';
+  }
+  navDot(active, shape) {
+    const base = 'width:22px;height:22px;border:2px solid ' + (active ? '#1c1b18' : '#b3afa4') + ';';
+    if (shape === 'round') return base + 'border-radius:50%;' + (active ? 'background:#edc23f;border-color:#1c1b18;' : '');
+    if (shape === 'soft') return base + 'border-radius:8px;' + (active ? 'background:#edc23f;' : '');
+    return base + 'border-radius:4px;' + (active ? 'background:#edc23f;' : '');
+  }
+
+  renderVals() {
+    const servings = this.state.servings || this.props.defaultServings || 2;
+    const factor = servings / 2;
+    const s = this.setState.bind(this);
+
+    const filters = ['All','Quick & Easy','Vegetarian','Gluten-Free','Low Carb','Dairy-Free'].map(label => ({
+      label,
+      style: this.pill(this.state.filter === label),
+      pick: () => s({ filter: label })
+    }));
+
+    const tagStyle = 'padding:5px 10px;border-radius:8px;font-size:12px;font-weight:600;letter-spacing:.02em;';
+    const tagTones = {
+      'Gluten-Free': tagStyle + 'background:#e4ecdf;color:#3f5c44;',
+      'High Protein': tagStyle + 'background:#f5e3e2;color:#7e4a4d;',
+      'Vegetarian': tagStyle + 'background:#e4ecdf;color:#3f5c44;',
+      'Dairy-Free': tagStyle + 'background:#e5ebf2;color:#3f5772;',
+      'Low Carb': tagStyle + 'background:#f3ecdc;color:#71592c;',
+      'One Pan': tagStyle + 'background:#efece4;color:#5c584e;'
+    };
+
+    const recipeData = [
+      { id:'steak', title:'Striploin Steak with Warm Potato, Snap Pea & Dill Salad', time:'30 min', photo:'plated steak + potato salad', tags:['Gluten-Free','High Protein'] },
+      { id:'soup', title:'Creamy Zucchini, Leek & Dill Soup with Cheesy Flatbread', time:'35 min', photo:'soup bowl + flatbread', tags:['Vegetarian','One Pan'] },
+      { id:'wrap', title:'Fish Tikka Naan Wrap with Yogurt & Veggie-Mango Salad', time:'25 min', photo:'naan wrap, overhead', tags:['Quick','Dairy-Free'] }
+    ];
+
+    const recipes = recipeData.map(r => {
+      const on = !!this.state.added[r.id];
+      return {
+        ...r,
+        tags: r.tags.map(t => ({ label: t, style: tagTones[t] || (tagStyle + 'background:#efece4;color:#5c584e;') })),
+        add: () => s(st => ({ added: { ...st.added, [r.id]: !st.added[r.id] } })),
+        addGlyph: on ? '✓' : '+',
+        addStyle: 'position:absolute;right:12px;bottom:12px;width:48px;height:48px;border-radius:50%;border:none;font-family:inherit;font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 18px -6px rgba(28,27,24,.4);' +
+          (on ? 'background:#1c1b18;color:#edc23f;' : 'background:#edc23f;color:#1c1b18;')
+      };
+    });
+
+    const servingOptions = [2,4,6].map(n => ({
+      label: String(n),
+      pick: () => s({ servings: n }),
+      style: 'width:36px;height:36px;border:none;border-radius:10px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;' +
+        (servings === n ? 'background:#1c1b18;color:#fffefb;' : 'background:transparent;color:#7a776d;')
+    }));
+
+    const tabs = ['Cookware','Ingredients','Instructions'].map(label => ({
+      label,
+      pick: () => s({ tab: label }),
+      style: 'border:none;background:transparent;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer;padding:16px 2px;color:' +
+        (this.state.tab === label ? '#1c1b18' : '#9a968a') + ';box-shadow:' +
+        (this.state.tab === label ? 'inset 0 -3px 0 0 #edc23f' : 'none') + ';'
+    }));
+
+    const stepData = [
+      { text:'Preheat oven to 450°F.', pills:[] },
+      { text:'Wash and dry the fresh produce.', pills:[[0.75,'lb','new potatoes'],[0.5,'small bunch','fresh dill'],[1,'(8 oz) pkg','sugar snap peas']] },
+      { text:'Quarter potatoes, transfer to a baking sheet pan, and drizzle with oil. Season with salt and pepper, toss to combine, and spread out in an even layer. Roast until starting to soften, about 15 minutes.', pills:[[2,'tsp','extra virgin olive oil'],[0.25,'tsp','salt'],[0.25,'tsp','black pepper']] },
+      { text:'Meanwhile, shave dill leaves off the stems and mince. Place in a medium bowl, then add minced shallot, mustard and mayonnaise; whisk to combine.', pills:[[1,'','shallot'],[2,'tsp','Dijon mustard'],[3,'tbsp','mayonnaise']] },
+      { text:'Pat steak dry and season generously on both sides. Sear 3–4 minutes per side for medium-rare, then rest 5 minutes before slicing against the grain.', pills:[[0.75,'lb','striploin steak'],[0.25,'tsp','garlic powder']] }
+    ];
+    const steps = stepData.map((st, i) => ({
+      n: i + 1,
+      text: st.text,
+      hasPills: st.pills.length > 0,
+      pills: st.pills.map(([q, u, name]) => ({ qty: (this.fmt(q * factor) + (u ? ' ' + u : '')).trim(), name }))
+    }));
+
+    const ingredients = [
+      ['fresh dill', 0.5, 'small bunch'], ['new potatoes', 0.75, 'lb'], ['shallot', 1, ''],
+      ['striploin (New York strip) steak', 0.75, 'lb'], ['sugar snap peas', 1, '(8 oz) pkg'],
+      ['Dijon mustard', 2, 'tsp'], ['mayonnaise', 3, 'tbsp'], ['extra virgin olive oil', 2, 'tsp'],
+      ['garlic powder', 0.25, 'tsp'], ['salt', 0.5, 'tsp'], ['black pepper', 0.25, 'tsp']
+    ].map(([name, q, u]) => ({ name, qty: (this.fmt(q * factor) + (u ? ' ' + u : '')).trim() }));
+
+    const cookware = ['aluminum foil','baking sheet pan',"chef's knife",'cutting board','medium bowl','skillet','tongs'].map(name => ({ name }));
+
+    const deptData = [
+      { name:'Produce', tone:'#e4ecdf', items:[['new potatoes','¾ lb'],['fresh dill','½ small bunch'],['shallot','1½'],['sugar snap peas','1 (8 oz) pkg'],['lime','1']] },
+      { name:'Meat & Seafood', tone:'#f5e3e2', items:[['striploin (NY strip) steak','¾ lb'],['chicken thighs, boneless','1 lb']] },
+      { name:'Dairy, Cheese & Eggs', tone:'#e5ebf2', items:[['whole milk','2½ cups'],['cheddar cheese','½ (8 oz) block']] },
+      { name:'Bakery', tone:'#f3ecdc', items:[['large flour tortilla','2'],['small corn tortilla','6']] },
+      { name:'Oils, Sauces & Condiments', tone:'#efece4', items:[['white wine vinegar','2 tbsp'],['Dijon mustard','2 tsp'],['mayonnaise','3 tbsp'],['extra virgin olive oil','2 tsp']] }
+    ];
+
+    let total = 0, done = 0;
+    const departments = deptData.map(d => {
+      return {
+        name: d.name,
+        headerStyle: 'position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(255,254,251,.96);backdrop-filter:blur(8px);border-bottom:1px solid #edeae1;',
+        dotStyle: 'width:10px;height:10px;border-radius:3px;background:' + d.tone + ';',
+        items: d.items.map(([name, qty]) => {
+          const key = d.name + '|' + name;
+          total++;
+          const on = !!this.state.checked[key];
+          if (on) done++;
+          return {
+            name, qty,
+            check: on ? '✓' : '',
+            toggle: (e) => { if (e && e.stopPropagation) e.stopPropagation(); s(st => ({ checked: { ...st.checked, [key]: !st.checked[key] } })); },
+            inspect: () => {},
+            rowStyle: 'display:flex;align-items:center;gap:14px;min-height:56px;padding:12px 20px;border-bottom:1px solid #f0ede5;cursor:pointer;' + (on ? 'opacity:.45;' : ''),
+            boxStyle: 'width:28px;height:28px;flex:none;border-radius:50%;font-family:inherit;font-size:14px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;' +
+              (on ? 'background:#1c1b18;border:2px solid #1c1b18;color:#edc23f;' : 'background:transparent;border:2px solid #d5d1c6;color:transparent;'),
+            nameStyle: 'font-size:17px;color:#1c1b18;' + (on ? 'text-decoration:line-through;' : ''),
+            qtyStyle: 'flex:none;font-size:16px;color:#9a968a;white-space:nowrap;' + (on ? 'text-decoration:line-through;' : '')
+          };
+        })
+      };
+    });
+
+    const remaining = total - done;
+
+    const substitutes = [['red wine vinegar'],['champagne vinegar'],['apple cider vinegar']].map(([name]) => {
+      const on = this.state.swapped === name;
+      return {
+        name,
+        swap: () => s({ swapped: on ? null : name }),
+        btnLabel: on ? 'Swapped' : 'Use this',
+        btnStyle: 'height:36px;padding:0 14px;border-radius:10px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;border:none;' +
+          (on ? 'background:#1c1b18;color:#fffefb;' : 'background:#fdf2cd;color:#5a4a16;')
+      };
+    });
+
+    return {
+      filters, recipes, servingOptions, tabs, steps, ingredients, cookware, departments, substitutes,
+      showDietTags: this.props.showDietTags !== false,
+      showQuantities: this.props.showQuantities !== false,
+      isInstructions: this.state.tab === 'Instructions',
+      isIngredients: this.state.tab === 'Ingredients',
+      isCookware: this.state.tab === 'Cookware',
+      remainingLabel: remaining + ' of ' + total + ' items remaining',
+      toggleCooked: () => s(st => ({ cooked: !st.cooked })),
+      cookedLabel: this.state.cooked ? '✓ Cooked' : 'Cooked?',
+      cookedStyle: 'flex:none;height:52px;padding:0 20px;border-radius:16px;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer;border:1px solid #e4e1d8;' +
+        (this.state.cooked ? 'background:#1c1b18;color:#fffefb;border-color:#1c1b18;' : 'background:#f4f2ec;color:#7a776d;'),
+      navExplore: ['Explore','Meal Plan','Groceries'].map((label, i) => ({
+        label,
+        pick: () => s({ nav: label }),
+        style: this.navItem(this.state.nav === label),
+        dotStyle: this.navDot(this.state.nav === label, ['soft','sq','round'][i])
+      })),
+      navGroceries: ['Explore','Meal Plan','Groceries'].map((label, i) => ({
+        label: label === 'Groceries' ? 'Groceries · ' + remaining : label,
+        style: this.navItem(label === 'Groceries'),
+        dotStyle: this.navDot(label === 'Groceries', ['soft','sq','round'][i])
+      })),
+      backdropItems: [
+        { name:'white wine vinegar', qty:'2 tbsp' },
+        { name:'Dijon mustard', qty:'2 tsp' },
+        { name:'mayonnaise', qty:'3 tbsp' },
+        { name:'extra virgin olive oil', qty:'2 tsp' }
+      ],
+      usedIn: [
+        { title:'Striploin Steak with Warm Potato, Snap Pea & Dill Salad', amount:'1 tbsp · 2 servings' },
+        { title:'Butter Lettuce Salad with Mango & Avocado', amount:'1 tbsp · 2 servings' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

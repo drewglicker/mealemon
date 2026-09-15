@@ -1,13 +1,19 @@
 import { NavLink } from 'react-router-dom'
-import { Compass, CalendarDays, ShoppingCart } from 'lucide-react'
 import { useQuery } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 
 const NAV_ITEMS = [
-  { to: '/', label: 'Explore', icon: Compass, end: true },
-  { to: '/meal-plan', label: 'Meal Plan', icon: CalendarDays, end: false },
-  { to: '/groceries', label: 'Groceries', icon: ShoppingCart, end: false },
+  { to: '/', label: 'Explore', shape: 'soft', end: true },
+  { to: '/meal-plan', label: 'Meal Plan', shape: 'sq', end: false },
+  { to: '/groceries', label: 'Groceries', shape: 'round', end: false },
 ] as const
+
+function navDotClasses(shape: string, active: boolean) {
+  const radius = shape === 'round' ? 'rounded-full' : shape === 'soft' ? 'rounded-lg' : 'rounded'
+  const border = active ? 'border-[#1c1b18]' : 'border-[#b3afa4]'
+  const fill = active ? 'bg-lemon-500' : 'bg-transparent'
+  return `h-[22px] w-[22px] border-2 ${radius} ${border} ${fill}`
+}
 
 export default function BottomNav() {
   const activePlan = useQuery(api.mealPlans.getActivePlan)
@@ -15,30 +21,27 @@ export default function BottomNav() {
     api.groceries.listForPlan,
     activePlan?.plan ? { mealPlanId: activePlan.plan._id } : 'skip',
   )
-  const uncheckedCount = groceryItems?.filter((i) => !i.isChecked).length ?? 0
+  const remaining = groceryItems?.filter((i) => !i.isChecked).length ?? 0
 
   return (
-    <nav className="flex shrink-0 border-t border-gray-200 bg-white pb-[env(safe-area-inset-bottom)]">
-      {NAV_ITEMS.map(({ to, label, icon: Icon, end }) => (
+    <nav className="flex shrink-0 border-t border-[#e9e6dd] bg-[rgba(255,254,251,0.94)] px-3 pb-[calc(env(safe-area-inset-bottom)+10px)] pt-2.5 backdrop-blur-md">
+      {NAV_ITEMS.map(({ to, label, shape, end }) => (
         <NavLink
           key={to}
           to={to}
           end={end}
           className={({ isActive }) =>
-            `relative flex flex-1 flex-col items-center gap-1 py-2.5 text-xs font-medium ${
-              isActive ? 'text-lemon-600' : 'text-gray-400'
+            `flex flex-1 flex-col items-center gap-1.5 py-1.5 text-[11px] font-semibold tracking-[0.03em] ${
+              isActive ? 'text-[#1c1b18]' : 'text-[#9a968a]'
             }`
           }
         >
-          <span className="relative">
-            <Icon size={22} strokeWidth={2.25} />
-            {label === 'Groceries' && uncheckedCount > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-lemon-500 px-1 text-[10px] font-bold text-white">
-                {uncheckedCount}
-              </span>
-            )}
-          </span>
-          {label}
+          {({ isActive }) => (
+            <>
+              <span className={navDotClasses(shape, isActive)} />
+              {label === 'Groceries' && remaining > 0 ? `Groceries · ${remaining}` : label}
+            </>
+          )}
         </NavLink>
       ))}
     </nav>

@@ -2,12 +2,11 @@ import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery, useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
-import { ChevronLeft, Clock, Plus } from 'lucide-react'
 import { scaledQuantity, toBaseUnits } from '../../shared/units'
 import { formatQuantity } from '../lib/formatQuantity'
 
 const SERVING_OPTIONS = [2, 4, 6] as const
-type Tab = 'cookware' | 'ingredients' | 'instructions'
+type Tab = 'Cookware' | 'Ingredients' | 'Instructions'
 
 export default function RecipeDetail() {
   const { slug } = useParams<{ slug: string }>()
@@ -16,10 +15,12 @@ export default function RecipeDetail() {
   const addToPlan = useMutation(api.mealPlans.addRecipeToPlan)
 
   const [servings, setServings] = useState<(typeof SERVING_OPTIONS)[number]>(4)
-  const [tab, setTab] = useState<Tab>('ingredients')
+  const [tab, setTab] = useState<Tab>('Instructions')
+  const [cooked, setCooked] = useState(false)
+  const [added, setAdded] = useState(false)
 
-  if (data === undefined) return <p className="p-6 text-center text-sm text-gray-400">Loading…</p>
-  if (data === null) return <p className="p-6 text-center text-sm text-gray-400">Recipe not found.</p>
+  if (data === undefined) return <p className="p-6 text-center text-sm text-[#9a968a]">Loading…</p>
+  if (data === null) return <p className="p-6 text-center text-sm text-[#9a968a]">Recipe not found.</p>
 
   const { recipe, ingredients, steps } = data
 
@@ -29,36 +30,29 @@ export default function RecipeDetail() {
     return formatQuantity(normalized, bucket, unit)
   }
 
+  async function handleAddToPlan() {
+    await addToPlan({ recipeId: recipe._id, targetServings: servings })
+    setAdded(true)
+  }
+
   return (
-    <div className="flex flex-col">
-      <div className="relative">
-        <img src={recipe.images[0]} alt={recipe.name} className="h-56 w-full object-cover" />
-        <button
-          onClick={() => navigate(-1)}
-          className="absolute left-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 shadow"
-        >
-          <ChevronLeft size={20} />
-        </button>
-      </div>
-
-      <div className="flex flex-col gap-3 p-4">
-        <h1 className="text-xl font-bold text-gray-900">{recipe.name}</h1>
-        <div className="flex items-center gap-4 text-xs text-gray-500">
-          <span className="flex items-center gap-1">
-            <Clock size={14} /> Cook {formatDuration(recipe.cookTime)}
-          </span>
-          <span>Total {formatDuration(recipe.totalTime)}</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-medium text-gray-500">Servings</span>
-          <div className="flex overflow-hidden rounded-full border border-gray-200">
+    <div className="flex h-full flex-col">
+      <div className="flex-none px-4 pb-3 pt-1 flex flex-col gap-2 border-b border-[#edeae1]">
+        <div className="flex items-center gap-2.5">
+          <button
+            onClick={() => navigate(-1)}
+            className="h-11 w-11 flex-none rounded-2xl bg-[#f4f2ec] text-[17px] text-[#1c1b18]"
+          >
+            ‹
+          </button>
+          <h1 className="min-w-0 flex-1 truncate text-[15px] font-semibold text-[#1c1b18]">{recipe.name}</h1>
+          <div className="flex flex-none gap-0.5 rounded-xl bg-[#f4f2ec] p-[3px]">
             {SERVING_OPTIONS.map((n) => (
               <button
                 key={n}
                 onClick={() => setServings(n)}
-                className={`px-3 py-1 text-xs font-semibold ${
-                  servings === n ? 'bg-lemon-500 text-white' : 'text-gray-500'
+                className={`h-9 w-9 rounded-[10px] text-[15px] font-semibold ${
+                  servings === n ? 'bg-[#1c1b18] text-[#fffefb]' : 'text-[#7a776d]'
                 }`}
               >
                 {n}
@@ -66,81 +60,101 @@ export default function RecipeDetail() {
             ))}
           </div>
         </div>
-
-        <button
-          onClick={() => addToPlan({ recipeId: recipe._id, targetServings: servings })}
-          className="flex items-center justify-center gap-2 rounded-xl bg-lemon-500 py-2.5 text-sm font-semibold text-white"
-        >
-          <Plus size={16} /> Add to Meal Plan
-        </button>
-
-        <div className="mt-2 flex border-b border-gray-200 text-sm">
-          {(['cookware', 'ingredients', 'instructions'] as Tab[]).map((t) => (
-            <button
-              key={t}
-              onClick={() => setTab(t)}
-              className={`flex-1 border-b-2 pb-2 text-center font-medium capitalize ${
-                tab === t ? 'border-lemon-500 text-lemon-700' : 'border-transparent text-gray-400'
-              }`}
-            >
-              {t}
-            </button>
-          ))}
+        <div className="pl-[54px] text-xs text-[#8b877c]">
+          Cook {formatDuration(recipe.cookTime)} · Total {formatDuration(recipe.totalTime)}
         </div>
+      </div>
 
-        {tab === 'cookware' && (
-          <ul className="list-disc space-y-1 pl-5 text-sm text-gray-700">
+      <div className="flex-none flex gap-6 border-b border-[#edeae1] px-4">
+        {(['Cookware', 'Ingredients', 'Instructions'] as Tab[]).map((t) => (
+          <button
+            key={t}
+            onClick={() => setTab(t)}
+            className={`py-4 text-base font-semibold ${
+              tab === t ? 'text-[#1c1b18] shadow-[inset_0_-3px_0_0_#edc23f]' : 'text-[#9a968a]'
+            }`}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+
+      <div className="flex-1 overflow-y-auto px-4 pb-8 pt-1.5">
+        {tab === 'Cookware' && (
+          <div className="flex flex-col">
             {recipe.keywords.length > 0 ? (
-              recipe.keywords.map((k: string) => <li key={k}>{k}</li>)
+              recipe.keywords.map((k: string) => (
+                <div key={k} className="border-b border-[#f0ede5] py-[17px] text-[17px] text-[#1c1b18]">
+                  {k}
+                </div>
+              ))
             ) : (
-              <p className="text-gray-400">No cookware listed for this recipe.</p>
+              <p className="py-8 text-center text-sm text-[#9a968a]">No cookware listed for this recipe.</p>
             )}
-          </ul>
+          </div>
         )}
 
-        {tab === 'ingredients' && (
-          <ul className="space-y-2 text-sm text-gray-700">
+        {tab === 'Ingredients' && (
+          <div className="flex flex-col">
             {ingredients.map((ri: any) => (
-              <li key={ri._id} className="flex items-start justify-between gap-2 border-b border-gray-50 pb-2">
-                <span>
+              <div key={ri._id} className="flex items-center justify-between gap-4 border-b border-[#f0ede5] py-[17px]">
+                <span className="text-[17px] text-[#1c1b18]">
                   {ri.ingredient?.canonicalName ?? ri.rawText}
-                  {ri.prepNote && <span className="text-gray-400">, {ri.prepNote}</span>}
+                  {ri.prepNote && <span className="text-[#9a968a]">, {ri.prepNote}</span>}
                 </span>
-                <span className="shrink-0 font-medium text-gray-900">{scaledLine(ri.baseQuantity, ri.unit)}</span>
-              </li>
+                <span className="whitespace-nowrap text-[17px] text-[#8b877c]">{scaledLine(ri.baseQuantity, ri.unit)}</span>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
 
-        {tab === 'instructions' && (
-          <ol className="flex flex-col gap-4 text-sm text-gray-700">
+        {tab === 'Instructions' && (
+          <div className="flex flex-col">
             {steps.map((step: any) => {
               const stepIngredients = ingredients.filter((ri: any) => step.linkedIngredientIds.includes(ri._id))
               return (
-                <li key={step._id} className="flex gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lemon-100 text-xs font-bold text-lemon-700">
+                <div key={step._id} className="flex gap-3.5 border-b border-[#f0ede5] py-5">
+                  <span className="w-[26px] flex-none text-xl font-semibold leading-[1.35] text-[#d9cfa8]">
                     {step.stepNumber}
                   </span>
-                  <div className="flex flex-col gap-1.5">
-                    <p>{step.instructionText}</p>
+                  <div className="flex min-w-0 flex-1 flex-col gap-3">
+                    <p className="text-[17px] leading-[1.45] text-[#1c1b18]">{step.instructionText}</p>
                     {stepIngredients.length > 0 && (
                       <div className="flex flex-wrap gap-1.5">
                         {stepIngredients.map((ri: any) => (
                           <span
                             key={ri._id}
-                            className="rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-medium text-gray-600"
+                            className="flex items-center gap-1.5 rounded-full border border-lemon-border bg-lemon-50 px-3 py-1.5 text-sm text-[#5a4a16]"
                           >
-                            {ri.ingredient?.canonicalName ?? ri.rawText} · {scaledLine(ri.baseQuantity, ri.unit)}
+                            <span className="font-semibold">{scaledLine(ri.baseQuantity, ri.unit)}</span>
+                            <span>{ri.ingredient?.canonicalName ?? ri.rawText}</span>
                           </span>
                         ))}
                       </div>
                     )}
                   </div>
-                </li>
+                </div>
               )
             })}
-          </ol>
+          </div>
         )}
+      </div>
+
+      <div className="flex-none flex gap-2.5 border-t border-[#e9e6dd] bg-[rgba(255,254,251,0.96)] px-4 pb-7 pt-3.5 backdrop-blur-md">
+        <button
+          onClick={() => setCooked((c) => !c)}
+          className={`h-[52px] flex-none rounded-2xl border px-5 text-base font-semibold ${
+            cooked ? 'border-[#1c1b18] bg-[#1c1b18] text-[#fffefb]' : 'border-[#e4e1d8] bg-[#f4f2ec] text-[#7a776d]'
+          }`}
+        >
+          {cooked ? '✓ Cooked' : 'Cooked?'}
+        </button>
+        <button
+          onClick={handleAddToPlan}
+          className="h-[52px] flex-1 rounded-2xl bg-lemon-500 text-[17px] font-semibold text-[#1c1b18]"
+        >
+          {added ? 'Added to Meal Plan ✓' : 'Add to Meal Plan'}
+        </button>
       </div>
     </div>
   )
