@@ -18,6 +18,7 @@ Each recipe is written to data/<slug>-<id>.json, e.g.:
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 import sys
@@ -78,6 +79,17 @@ def find_recipe_block(blocks: list[dict[str, Any]]) -> dict[str, Any] | None:
     return None
 
 
+def unescape(value: Any) -> Any:
+    """Recursively unescape HTML entities (e.g. &amp; -> &) in strings."""
+    if isinstance(value, str):
+        return html.unescape(value)
+    if isinstance(value, list):
+        return [unescape(item) for item in value]
+    if isinstance(value, dict):
+        return {key: unescape(item) for key, item in value.items()}
+    return value
+
+
 def normalize_instructions(raw_instructions: Any) -> list[str]:
     """recipeInstructions can be a list of HowToStep dicts or plain strings."""
     steps: list[str] = []
@@ -91,7 +103,7 @@ def normalize_instructions(raw_instructions: Any) -> list[str]:
                     steps.append(text)
             elif isinstance(item, str):
                 steps.append(item)
-    return steps
+    return [html.unescape(step) for step in steps]
 
 
 def normalize_images(raw_image: Any) -> list[str]:
@@ -129,19 +141,21 @@ def parse_recipe(url: str, html: str) -> dict[str, Any]:
     return {
         "source_url": url,
         "recipe_id": recipe.get("@id", recipe_id),
-        "name": recipe.get("name"),
-        "recipe_category": recipe.get("recipeCategory"),
-        "recipe_cuisine": recipe.get("recipeCuisine"),
-        "keywords": recipe.get("keywords"),
+        "name": unescape(recipe.get("name")),
+        "recipe_category": unescape(recipe.get("recipeCategory")),
+        "recipe_cuisine": unescape(recipe.get("recipeCuisine")),
+        "keywords": unescape(recipe.get("keywords")),
         "cook_time": recipe.get("cookTime"),
         "total_time": recipe.get("totalTime"),
-        "recipe_yield": recipe.get("recipeYield"),
-        "ingredients": recipe.get("recipeIngredient", []),
+        "recipe_yield": unescape(recipe.get("recipeYield")),
+        "ingredients": unescape(recipe.get("recipeIngredient", [])),
         "instructions": normalize_instructions(recipe.get("recipeInstructions")),
         "images": normalize_images(recipe.get("image")),
-        "author": (recipe.get("author") or {}).get("name")
-        if isinstance(recipe.get("author"), dict)
-        else recipe.get("author"),
+        "author": unescape(
+            (recipe.get("author") or {}).get("name")
+            if isinstance(recipe.get("author"), dict)
+            else recipe.get("author")
+        ),
         "slug": slug,
     }
 
