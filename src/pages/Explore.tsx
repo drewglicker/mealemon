@@ -68,7 +68,10 @@ export default function Explore() {
     )
     observer.observe(node)
     return () => observer.disconnect()
-  }, [hasMore, page])
+    // items.length is included so the observer re-attaches once the sentinel
+    // div actually mounts (it only renders after the first page of items
+    // lands, one render after `page`/`hasMore` first change).
+  }, [hasMore, page, items.length])
 
   const recipes = items
   const addToPlan = useMutation(api.mealPlans.addRecipeToPlan)
