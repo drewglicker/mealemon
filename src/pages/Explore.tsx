@@ -25,6 +25,18 @@ export default function Explore() {
 
   const lastProcessedCursorRef = useRef<string | null | undefined>(undefined)
 
+  // Circuit breaker for the "empty page" auto-chase below: caps how many
+  // consecutive pages we'll silently skip (no user scroll involved) before
+  // giving up and waiting for a real scroll to continue. Without this, a
+  // backend stream that never legitimately reports hasMore:false (see
+  // convex/recipes.ts stream-A hasMore) combined with a run of
+  // already-seen/duplicate pages will auto-fetch the ENTIRE catalog into the
+  // DOM within seconds with zero user interaction — this is the mobile
+  // freeze bug reported 2026-09-16. Reset to 0 on any real (non-chase)
+  // progress: a page that adds new items, or a genuine scroll-triggered load.
+  const autoChaseHopsRef = useRef(0)
+  const MAX_AUTO_CHASE_HOPS = 3
+
   useEffect(() => {
     setSeed(Math.random())
     setCursor(null)
@@ -33,6 +45,7 @@ export default function Explore() {
     seenIds.current = new Set()
     inFlightRef.current = false
     lastProcessedCursorRef.current = undefined
+    autoChaseHopsRef.current = 0
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, filter])
 
@@ -73,12 +86,22 @@ export default function Explore() {
     })
     setPendingCursor(page.cursor)
     inFlightRef.current = false
+    if (addedAny) {
+      autoChaseHopsRef.current = 0
+    }
     // A page can legitimately come back empty (e.g. right at the seam
     // between the two shuffleKey streams) while more data remains — chase
     // straight to the next cursor instead of stalling on an empty screen.
+    // Capped at MAX_AUTO_CHASE_HOPS: beyond that we stop auto-fetching and
+    // wait for a real scroll (see IntersectionObserver callback below,
+    // which also resets the hop counter) rather than silently vacuuming the
+    // whole catalog when the backend's hasMore flag doesn't reflect reality.
     if (!addedAny && page.hasMore && page.cursor !== cursor) {
-      inFlightRef.current = true
-      setCursor(page.cursor)
+      if (autoChaseHopsRef.current < MAX_AUTO_CHASE_HOPS) {
+        autoChaseHopsRef.current += 1
+        inFlightRef.current = true
+        setCursor(page.cursor)
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page])
@@ -105,6 +128,7 @@ export default function Explore() {
           !inFlightRef.current &&
           pendingCursorRef.current !== cursorRef.current
         ) {
+          autoChaseHopsRef.current = 0
           inFlightRef.current = true
           setCursor(pendingCursorRef.current)
         }
