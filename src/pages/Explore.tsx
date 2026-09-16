@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useQuery, useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import { Link } from 'react-router-dom'
@@ -29,6 +29,7 @@ export default function Explore() {
     setPendingCursor(null)
     setItems([])
     seenIds.current = new Set()
+    inFlightRef.current = false
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, filter])
 
@@ -39,6 +40,17 @@ export default function Explore() {
     cursor,
     numItems: PAGE_SIZE,
   })
+
+  // Refs mirroring the latest state so the IntersectionObserver's callback
+  // (created once, not on every render — see setSentinelRef below) always
+  // reads fresh values without needing to be torn down and recreated.
+  const hasMoreRef = useRef(false)
+  const pendingCursorRef = useRef<string | null>(null)
+  const cursorRef = useRef<string | null>(null)
+  const inFlightRef = useRef(false)
+  hasMoreRef.current = page?.hasMore ?? false
+  pendingCursorRef.current = pendingCursor
+  cursorRef.current = cursor
 
   useEffect(() => {
     if (!page) return
@@ -55,10 +67,12 @@ export default function Explore() {
       return next
     })
     setPendingCursor(page.cursor)
+    inFlightRef.current = false
     // A page can legitimately come back empty (e.g. right at the seam
     // between the two shuffleKey streams) while more data remains — chase
     // straight to the next cursor instead of stalling on an empty screen.
     if (!addedAny && page.hasMore && page.cursor !== cursor) {
+      inFlightRef.current = true
       setCursor(page.cursor)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -67,24 +81,33 @@ export default function Explore() {
   const hasMore = page?.hasMore ?? false
   const isLoadingFirstPage = page === undefined && items.length === 0
 
-  const sentinelRef = useRef<HTMLDivElement | null>(null)
-  useEffect(() => {
-    const node = sentinelRef.current
+  const observerRef = useRef<IntersectionObserver | null>(null)
+  // A callback ref: fires only when the sentinel div actually mounts/unmounts
+  // (not on every re-render), so we create exactly one observer per sentinel
+  // lifetime instead of recreating it — and re-firing its initial check — on
+  // every page load.
+  const setSentinelRef = useCallback((node: HTMLDivElement | null) => {
+    if (observerRef.current) {
+      observerRef.current.disconnect()
+      observerRef.current = null
+    }
     if (!node) return
-    const observer = new IntersectionObserver(
+    observerRef.current = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && hasMore && page !== undefined && pendingCursor !== cursor) {
-          setCursor(pendingCursor)
+        if (
+          entries[0].isIntersecting &&
+          hasMoreRef.current &&
+          !inFlightRef.current &&
+          pendingCursorRef.current !== cursorRef.current
+        ) {
+          inFlightRef.current = true
+          setCursor(pendingCursorRef.current)
         }
       },
-      { rootMargin: '400px' },
+      { rootMargin: '200px' },
     )
-    observer.observe(node)
-    return () => observer.disconnect()
-    // items.length is included so the observer re-attaches once the sentinel
-    // div actually mounts (it only renders after the first page of items
-    // lands, one render after `page`/`hasMore` first change).
-  }, [hasMore, page, items.length, pendingCursor, cursor])
+    observerRef.current.observe(node)
+  }, [])
 
   const recipes = items
   const addToPlan = useMutation(api.mealPlans.addRecipeToPlan)
@@ -188,7 +211,7 @@ export default function Explore() {
       </div>
 
       {recipes.length > 0 && (
-        <div ref={sentinelRef} className="flex h-10 items-center justify-center">
+        <div ref={setSentinelRef} className="flex h-10 items-center justify-center">
           {hasMore && <span className="text-xs text-[#9a968a]">Loading more…</span>}
         </div>
       )}
