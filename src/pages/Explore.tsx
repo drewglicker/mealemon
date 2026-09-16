@@ -16,14 +16,15 @@ export default function Explore() {
 
   // A fresh random seed + reset cursor whenever the search/filter changes,
   // so each new query gets its own random order starting from the top.
-  const [seed, setSeed] = useState(() => Math.floor(Math.random() * 1e9))
+  // Must be in the same domain as `shuffleKey` (Math.random(), i.e. [0,1)).
+  const [seed, setSeed] = useState(() => Math.random())
   const [cursor, setCursor] = useState<string | null>(null)
   const [pendingCursor, setPendingCursor] = useState<string | null>(null)
   const [items, setItems] = useState<any[]>([])
   const seenIds = useRef(new Set<string>())
 
   useEffect(() => {
-    setSeed(Math.floor(Math.random() * 1e9))
+    setSeed(Math.random())
     setCursor(null)
     setPendingCursor(null)
     setItems([])
@@ -41,17 +42,26 @@ export default function Explore() {
 
   useEffect(() => {
     if (!page) return
+    let addedAny = false
     setItems((prev) => {
       const next = [...prev]
       for (const r of page.items) {
         if (!seenIds.current.has(r._id)) {
           seenIds.current.add(r._id)
           next.push(r)
+          addedAny = true
         }
       }
       return next
     })
     setPendingCursor(page.cursor)
+    // A page can legitimately come back empty (e.g. right at the seam
+    // between the two shuffleKey streams) while more data remains — chase
+    // straight to the next cursor instead of stalling on an empty screen.
+    if (!addedAny && page.hasMore && page.cursor !== cursor) {
+      setCursor(page.cursor)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page])
 
   const hasMore = page?.hasMore ?? false
