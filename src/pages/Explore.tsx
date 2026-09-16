@@ -4,9 +4,24 @@ import { api } from '../../convex/_generated/api'
 import { Link } from 'react-router-dom'
 import type { Id } from '../../convex/_generated/dataModel'
 import { dietaryTagTone } from '../lib/departmentTheme'
+import { List, useDynamicRowHeight, type RowComponentProps } from 'react-window'
 
 const FILTERS = ['All', 'Vegetarian', 'Gluten-Free', 'Low Carb', 'Dairy-Free']
 const PAGE_SIZE = 10
+
+// Recipe cards have a fixed-height image but a variable-height text block
+// (title can wrap to multiple lines, dietary tag chips can wrap to a second
+// row), so row height is NOT uniform — a FixedSizeList would either clip
+// content or leave uneven gaps. `useDynamicRowHeight` measures each rendered
+// row via ResizeObserver and re-flows the list as real heights come in.
+// This estimate (image + gap + ~1 line title + ~1 row of tags + row gap) is
+// only used before a row has been measured for the first time.
+const ESTIMATED_ROW_HEIGHT = 300
+// How many rows from the end of the currently loaded `items` array we allow
+// before kicking off the next page fetch — mirrors the old IntersectionObserver's
+// `rootMargin: '200px'` early-trigger, just expressed in rows instead of pixels.
+const LOAD_MORE_ROW_THRESHOLD = 4
+const OVERSCAN_ROW_COUNT = 4
 
 export default function Explore() {
   const [search, setSearch] = useState('')
@@ -57,9 +72,10 @@ export default function Explore() {
     numItems: PAGE_SIZE,
   })
 
-  // Refs mirroring the latest state so the IntersectionObserver's callback
-  // (created once, not on every render — see setSentinelRef below) always
-  // reads fresh values without needing to be torn down and recreated.
+  // Refs mirroring the latest state so the virtualized list's "rows rendered"
+  // callback (stable identity isn't required here, but the refs keep the
+  // logic identical to the effect below without re-subscribing) always reads
+  // fresh values.
   const hasMoreRef = useRef(false)
   const pendingCursorRef = useRef<string | null>(null)
   const cursorRef = useRef<string | null>(null)
@@ -93,9 +109,9 @@ export default function Explore() {
     // between the two shuffleKey streams) while more data remains — chase
     // straight to the next cursor instead of stalling on an empty screen.
     // Capped at MAX_AUTO_CHASE_HOPS: beyond that we stop auto-fetching and
-    // wait for a real scroll (see IntersectionObserver callback below,
-    // which also resets the hop counter) rather than silently vacuuming the
-    // whole catalog when the backend's hasMore flag doesn't reflect reality.
+    // wait for a real scroll (see handleRowsRendered below, which also
+    // resets the hop counter) rather than silently vacuuming the whole
+    // catalog when the backend's hasMore flag doesn't reflect reality.
     if (!addedAny && page.hasMore && page.cursor !== cursor) {
       if (autoChaseHopsRef.current < MAX_AUTO_CHASE_HOPS) {
         autoChaseHopsRef.current += 1
@@ -109,36 +125,33 @@ export default function Explore() {
   const hasMore = page?.hasMore ?? false
   const isLoadingFirstPage = page === undefined && items.length === 0
 
-  const observerRef = useRef<IntersectionObserver | null>(null)
-  // A callback ref: fires only when the sentinel div actually mounts/unmounts
-  // (not on every re-render), so we create exactly one observer per sentinel
-  // lifetime instead of recreating it — and re-firing its initial check — on
-  // every page load.
-  const setSentinelRef = useCallback((node: HTMLDivElement | null) => {
-    if (observerRef.current) {
-      observerRef.current.disconnect()
-      observerRef.current = null
-    }
-    if (!node) return
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        if (
-          entries[0].isIntersecting &&
-          hasMoreRef.current &&
-          !inFlightRef.current &&
-          pendingCursorRef.current !== cursorRef.current
-        ) {
-          autoChaseHopsRef.current = 0
-          inFlightRef.current = true
-          setCursor(pendingCursorRef.current)
-        }
-      },
-      { rootMargin: '200px' },
-    )
-    observerRef.current.observe(node)
-  }, [])
-
   const recipes = items
+
+  // Called by react-window's List whenever the set of rendered rows changes
+  // (including its own overscan). This replaces the old IntersectionObserver
+  // sentinel div: once the overscanned range gets within
+  // LOAD_MORE_ROW_THRESHOLD rows of the end of the currently loaded `items`
+  // array, fetch the next page — same guard conditions (hasMore, not
+  // already in flight, a pending cursor actually available) as before.
+  const handleRowsRendered = useCallback(
+    (
+      _visibleRows: { startIndex: number; stopIndex: number },
+      overscannedRows: { startIndex: number; stopIndex: number },
+    ) => {
+      if (
+        overscannedRows.stopIndex >= recipes.length - LOAD_MORE_ROW_THRESHOLD &&
+        hasMoreRef.current &&
+        !inFlightRef.current &&
+        pendingCursorRef.current !== cursorRef.current
+      ) {
+        autoChaseHopsRef.current = 0
+        inFlightRef.current = true
+        setCursor(pendingCursorRef.current)
+      }
+    },
+    [recipes.length],
+  )
+
   const addToPlan = useMutation(api.mealPlans.addRecipeToPlan)
   const [added, setAdded] = useState<Record<string, boolean>>({})
 
@@ -150,8 +163,12 @@ export default function Explore() {
     [addToPlan],
   )
 
+  const dynamicRowHeight = useDynamicRowHeight({ defaultRowHeight: ESTIMATED_ROW_HEIGHT })
+
+  const rowProps = useMemo<RowProps>(() => ({ recipes, added, onAdd: handleAdd }), [recipes, added, handleAdd])
+
   return (
-    <div className="flex flex-col gap-3.5 pb-28">
+    <div className="flex h-full min-h-0 flex-col">
       <div className="flex flex-col gap-3.5 border-b border-[#edeae1] px-5 pb-3 pt-2">
         <div className="flex items-center justify-between">
           <h1 className="font-serif text-[30px] leading-none text-[#1c1b18]">Mealemon</h1>
@@ -192,17 +209,45 @@ export default function Explore() {
         <p className="px-5 py-8 text-center text-sm text-[#9a968a]">No recipes match your filters.</p>
       )}
 
-      <div className="flex flex-col gap-[22px] px-5">
-        {recipes.map((recipe) => (
-          <RecipeCard key={recipe._id} recipe={recipe} isAdded={!!added[recipe._id]} onAdd={handleAdd} />
-        ))}
-      </div>
-
       {recipes.length > 0 && (
-        <div ref={setSentinelRef} className="flex h-10 items-center justify-center">
-          {hasMore && <span className="text-xs text-[#9a968a]">Loading more…</span>}
+        <div className="min-h-0 flex-1">
+          <List
+            className="pb-28"
+            rowComponent={Row}
+            rowCount={recipes.length}
+            rowHeight={dynamicRowHeight}
+            rowProps={rowProps}
+            overscanCount={OVERSCAN_ROW_COUNT}
+            onRowsRendered={handleRowsRendered}
+          />
         </div>
       )}
+
+      {recipes.length > 0 && hasMore && (
+        <div className="flex h-10 shrink-0 items-center justify-center border-t border-[#edeae1]">
+          <span className="text-xs text-[#9a968a]">Loading more…</span>
+        </div>
+      )}
+    </div>
+  )
+}
+
+type RowProps = {
+  recipes: any[]
+  added: Record<string, boolean>
+  onAdd: (recipeId: Id<'recipes'>) => void
+}
+
+// Rendered by react-window's List for each virtualized row. Receives `style`
+// (absolute positioning react-window uses to place the row) and
+// `ariaAttributes` that must be spread onto the root element; both are
+// required for the list/dynamic-height measurement to work correctly.
+function Row({ index, style, ariaAttributes, recipes, added, onAdd }: RowComponentProps<RowProps>) {
+  const recipe = recipes[index]
+  if (!recipe) return null
+  return (
+    <div style={style} {...ariaAttributes} className="px-5 pb-[22px]">
+      <RecipeCard recipe={recipe} isAdded={!!added[recipe._id]} onAdd={onAdd} />
     </div>
   )
 }
