@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useQuery, useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import { Link } from 'react-router-dom'
@@ -73,8 +73,6 @@ export default function Explore() {
     })
     setPendingCursor(page.cursor)
     inFlightRef.current = false
-    ;(window as any).__dbg = (window as any).__dbg || []
-    ;(window as any).__dbg.push({ addedAny, hasMore: page.hasMore, itemsInPage: page.items.length, cursorWas: cursor })
     // A page can legitimately come back empty (e.g. right at the seam
     // between the two shuffleKey streams) while more data remains — chase
     // straight to the next cursor instead of stalling on an empty screen.
@@ -120,10 +118,13 @@ export default function Explore() {
   const addToPlan = useMutation(api.mealPlans.addRecipeToPlan)
   const [added, setAdded] = useState<Record<string, boolean>>({})
 
-  async function handleAdd(recipeId: Id<'recipes'>) {
-    await addToPlan({ recipeId })
-    setAdded((prev) => ({ ...prev, [recipeId]: !prev[recipeId] }))
-  }
+  const handleAdd = useCallback(
+    async (recipeId: Id<'recipes'>) => {
+      await addToPlan({ recipeId })
+      setAdded((prev) => ({ ...prev, [recipeId]: !prev[recipeId] }))
+    },
+    [addToPlan],
+  )
 
   return (
     <div className="flex flex-col gap-3.5 pb-28">
@@ -168,53 +169,9 @@ export default function Explore() {
       )}
 
       <div className="flex flex-col gap-[22px] px-5">
-        {recipes.map((recipe) => {
-          const isAdded = !!added[recipe._id]
-          return (
-            <div key={recipe._id} className="flex flex-col gap-3">
-              <Link to={`/recipe/${recipe.slug}`} className="block">
-                <div
-                  className="relative h-[196px] overflow-hidden rounded-[20px] bg-cover bg-center"
-                  style={{
-                    backgroundImage: recipe.images[0] ? `url(${recipe.images[0]})` : undefined,
-                    backgroundColor: '#efece4',
-                  }}
-                >
-                  <span className="absolute left-3 top-3 rounded-full bg-[rgba(28,27,24,0.82)] px-2.5 py-1.5 text-xs font-semibold text-[#fffefb]">
-                    {formatDuration(recipe.totalTime)}
-                  </span>
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault()
-                      handleAdd(recipe._id)
-                    }}
-                    className={`absolute bottom-3 right-3 flex h-12 w-12 items-center justify-center rounded-full text-[22px] shadow-[0_8px_18px_-6px_rgba(28,27,24,0.4)] ${
-                      isAdded ? 'bg-[#1c1b18] text-lemon-500' : 'bg-lemon-500 text-[#1c1b18]'
-                    }`}
-                    aria-label="Add to meal plan"
-                  >
-                    {isAdded ? '✓' : '+'}
-                  </button>
-                </div>
-              </Link>
-              <div className="flex flex-col gap-2">
-                <Link to={`/recipe/${recipe.slug}`} className="text-[19px] font-semibold leading-[1.25] text-[#1c1b18]">
-                  {recipe.name}
-                </Link>
-                <div className="flex flex-wrap gap-1.5">
-                  {recipe.dietaryFlags.slice(0, 3).map((flag: string) => {
-                    const tone = dietaryTagTone(flag)
-                    return (
-                      <span key={flag} className={`rounded-lg px-2.5 py-1 text-xs font-semibold ${tone.bg} ${tone.text}`}>
-                        {flag}
-                      </span>
-                    )
-                  })}
-                </div>
-              </div>
-            </div>
-          )
-        })}
+        {recipes.map((recipe) => (
+          <RecipeCard key={recipe._id} recipe={recipe} isAdded={!!added[recipe._id]} onAdd={handleAdd} />
+        ))}
       </div>
 
       {recipes.length > 0 && (
@@ -225,6 +182,64 @@ export default function Explore() {
     </div>
   )
 }
+
+const RecipeCard = memo(function RecipeCard({
+  recipe,
+  isAdded,
+  onAdd,
+}: {
+  recipe: any
+  isAdded: boolean
+  onAdd: (recipeId: Id<'recipes'>) => void
+}) {
+  return (
+    <div className="flex flex-col gap-3">
+      <Link to={`/recipe/${recipe.slug}`} className="block">
+        <div className="relative h-[196px] overflow-hidden rounded-[20px] bg-[#efece4]">
+          {recipe.images[0] && (
+            <img
+              src={recipe.images[0]}
+              alt={recipe.name}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          )}
+          <span className="absolute left-3 top-3 rounded-full bg-[rgba(28,27,24,0.82)] px-2.5 py-1.5 text-xs font-semibold text-[#fffefb]">
+            {formatDuration(recipe.totalTime)}
+          </span>
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              onAdd(recipe._id)
+            }}
+            className={`absolute bottom-3 right-3 flex h-12 w-12 items-center justify-center rounded-full text-[22px] shadow-[0_8px_18px_-6px_rgba(28,27,24,0.4)] ${
+              isAdded ? 'bg-[#1c1b18] text-lemon-500' : 'bg-lemon-500 text-[#1c1b18]'
+            }`}
+            aria-label="Add to meal plan"
+          >
+            {isAdded ? '✓' : '+'}
+          </button>
+        </div>
+      </Link>
+      <div className="flex flex-col gap-2">
+        <Link to={`/recipe/${recipe.slug}`} className="text-[19px] font-semibold leading-[1.25] text-[#1c1b18]">
+          {recipe.name}
+        </Link>
+        <div className="flex flex-wrap gap-1.5">
+          {recipe.dietaryFlags.slice(0, 3).map((flag: string) => {
+            const tone = dietaryTagTone(flag)
+            return (
+              <span key={flag} className={`rounded-lg px-2.5 py-1 text-xs font-semibold ${tone.bg} ${tone.text}`}>
+                {flag}
+              </span>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  )
+})
 
 function formatDuration(iso8601: string): string {
   const match = iso8601.match(/PT(?:(\d+)H)?(?:(\d+)M)?/)

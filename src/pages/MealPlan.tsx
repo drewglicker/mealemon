@@ -60,10 +60,17 @@ export default function MealPlan() {
           if (!recipe) return null
           return (
             <div key={planRecipeId} className="flex items-center gap-3 rounded-2xl border border-[#eae7de] p-3">
-              <div
-                className="h-16 w-16 flex-none rounded-xl bg-cover bg-center"
-                style={{ backgroundImage: recipe.images[0] ? `url(${recipe.images[0]})` : undefined, backgroundColor: '#efece4' }}
-              />
+              <div className="relative h-16 w-16 flex-none overflow-hidden rounded-xl bg-[#efece4]">
+                {recipe.images[0] && (
+                  <img
+                    src={recipe.images[0]}
+                    alt={recipe.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                )}
+              </div>
               <div className="flex flex-1 flex-col gap-2">
                 <Link to={`/recipe/${recipe.slug}`} className="line-clamp-1 text-[15px] font-semibold text-[#1c1b18]">
                   {recipe.name}

@@ -203,10 +203,17 @@ function ItemInspector({ item, mealPlanId, onClose }: { item: any; mealPlanId: I
           {recipes && recipes.length === 0 && <p className="text-sm text-[#9a968a]">Manually added item.</p>}
           {recipes?.map((r: any) => (
             <div key={r._id} className="flex items-center gap-3 rounded-2xl border border-[#eae7de] bg-[#fdfcf8] p-2.5">
-              <div
-                className="h-[52px] w-[52px] flex-none rounded-xl bg-cover bg-center"
-                style={{ backgroundImage: r.images[0] ? `url(${r.images[0]})` : undefined, backgroundColor: '#efece4' }}
-              />
+              <div className="relative h-[52px] w-[52px] flex-none overflow-hidden rounded-xl bg-[#efece4]">
+                {r.images[0] && (
+                  <img
+                    src={r.images[0]}
+                    alt={r.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                )}
+              </div>
               <div className="min-w-0 flex-1 truncate text-[15px] font-semibold text-[#1c1b18]">{r.name}</div>
               <span className="text-[15px] text-[#c6c2b7]">›</span>
             </div>
