@@ -88,9 +88,30 @@ export const list = query({
         .query('recipes')
         .withIndex(indexName, (q) => q.eq(flagField, true).gte('shuffleKey', seed))
         .paginate(paginationOpts)
+      // Truthful hasMore for stream A (filtered):
+      //  - A not done yet -> definitely more items, hasMore = true.
+      //  - A just finished -> stream B (key < seed, same flag) is about to
+      //    start on the *next* call, but we haven't paginated it yet, so we
+      //    don't actually know if it's done. Rather than blindly assuming
+      //    "there's always more" (the old bug), do a cheap single-doc probe
+      //    of B's index range to see if it has *any* matching rows at all.
+      //    If B is genuinely empty (e.g. seed is small/zero, or very few
+      //    rows match this flag), we can truthfully report hasMore=false
+      //    right now instead of making the frontend loop through an
+      //    always-empty B stream (the root cause of the auto-chase runaway).
+      let hasMore: boolean
+      if (!page.isDone) {
+        hasMore = true
+      } else {
+        const bProbe = await ctx.db
+          .query('recipes')
+          .withIndex(indexName, (q) => q.eq(flagField, true).lt('shuffleKey', seed))
+          .first()
+        hasMore = bProbe !== null
+      }
       return {
         items: page.page,
-        hasMore: true, // even if this stream is done, stream B still remains
+        hasMore,
         cursor: JSON.stringify(
           page.isDone
             ? { stream: 'B', inner: null }
@@ -115,9 +136,30 @@ export const list = query({
       .query('recipes')
       .withIndex('by_shuffleKey', (q) => q.gte('shuffleKey', seed))
       .paginate(paginationOpts)
+    // Same truthful-hasMore fix as the filtered branch above, for the
+    // unfiltered circular scan: only claim "there's more" once stream A
+    // is genuinely not done, or (A just finished) once we've confirmed
+    // stream B's range actually has at least one row. See comment above
+    // for the full isDone/hasMore state-transition reasoning:
+    //   - !pageA.isDone                          -> hasMore = true
+    //   - pageA.isDone && B range non-empty        -> hasMore = true
+    //   - pageA.isDone && B range empty (probe==null) -> hasMore = false
+    // Once we're actually inside stream B (the `state.stream === 'B'`
+    // branch above), hasMore is simply `!page.isDone` for that stream,
+    // so hasMore only ever goes false once both A and B are exhausted.
+    let hasMore: boolean
+    if (!page.isDone) {
+      hasMore = true
+    } else {
+      const bProbe = await ctx.db
+        .query('recipes')
+        .withIndex('by_shuffleKey', (q) => q.lt('shuffleKey', seed))
+        .first()
+      hasMore = bProbe !== null
+    }
     return {
       items: page.page,
-      hasMore: true,
+      hasMore,
       cursor: JSON.stringify(
         page.isDone ? { stream: 'B', inner: null } : { stream: 'A', inner: page.continueCursor },
       ),
