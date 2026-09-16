@@ -23,6 +23,8 @@ export default function Explore() {
   const [items, setItems] = useState<any[]>([])
   const seenIds = useRef(new Set<string>())
 
+  const lastProcessedCursorRef = useRef<string | null | undefined>(undefined)
+
   useEffect(() => {
     setSeed(Math.random())
     setCursor(null)
@@ -30,6 +32,7 @@ export default function Explore() {
     setItems([])
     seenIds.current = new Set()
     inFlightRef.current = false
+    lastProcessedCursorRef.current = undefined
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, filter])
 
@@ -54,6 +57,8 @@ export default function Explore() {
 
   useEffect(() => {
     if (!page) return
+    if (lastProcessedCursorRef.current === cursor) return
+    lastProcessedCursorRef.current = cursor
     let addedAny = false
     setItems((prev) => {
       const next = [...prev]
@@ -68,6 +73,8 @@ export default function Explore() {
     })
     setPendingCursor(page.cursor)
     inFlightRef.current = false
+    ;(window as any).__dbg = (window as any).__dbg || []
+    ;(window as any).__dbg.push({ addedAny, hasMore: page.hasMore, itemsInPage: page.items.length, cursorWas: cursor })
     // A page can legitimately come back empty (e.g. right at the seam
     // between the two shuffleKey streams) while more data remains — chase
     // straight to the next cursor instead of stalling on an empty screen.
