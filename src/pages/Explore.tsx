@@ -14,16 +14,18 @@ export default function Explore() {
 
   const activeTags = useMemo(() => (filter === 'All' ? [] : [filter]), [filter])
 
-  // A fresh random seed + reset offset whenever the search/filter changes,
+  // A fresh random seed + reset cursor whenever the search/filter changes,
   // so each new query gets its own random order starting from the top.
   const [seed, setSeed] = useState(() => Math.floor(Math.random() * 1e9))
-  const [offset, setOffset] = useState(0)
+  const [cursor, setCursor] = useState<string | null>(null)
+  const [pendingCursor, setPendingCursor] = useState<string | null>(null)
   const [items, setItems] = useState<any[]>([])
   const seenIds = useRef(new Set<string>())
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 1e9))
-    setOffset(0)
+    setCursor(null)
+    setPendingCursor(null)
     setItems([])
     seenIds.current = new Set()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,8 +35,8 @@ export default function Explore() {
     search,
     dietaryFlags: activeTags,
     seed,
-    offset,
-    limit: PAGE_SIZE,
+    cursor,
+    numItems: PAGE_SIZE,
   })
 
   useEffect(() => {
@@ -49,6 +51,7 @@ export default function Explore() {
       }
       return next
     })
+    setPendingCursor(page.cursor)
   }, [page])
 
   const hasMore = page?.hasMore ?? false
@@ -60,8 +63,8 @@ export default function Explore() {
     if (!node) return
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && hasMore && page !== undefined) {
-          setOffset((prev) => prev + PAGE_SIZE)
+        if (entries[0].isIntersecting && hasMore && page !== undefined && pendingCursor !== cursor) {
+          setCursor(pendingCursor)
         }
       },
       { rootMargin: '400px' },
@@ -71,7 +74,7 @@ export default function Explore() {
     // items.length is included so the observer re-attaches once the sentinel
     // div actually mounts (it only renders after the first page of items
     // lands, one render after `page`/`hasMore` first change).
-  }, [hasMore, page, items.length])
+  }, [hasMore, page, items.length, pendingCursor, cursor])
 
   const recipes = items
   const addToPlan = useMutation(api.mealPlans.addRecipeToPlan)

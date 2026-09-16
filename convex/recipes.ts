@@ -1,69 +1,126 @@
 import { query } from './_generated/server'
 import { v } from 'convex/values'
 
-/** Deterministic seeded PRNG (mulberry32) so a given seed always produces
- * the same shuffle order — lets the client page through a stable random
- * ordering instead of re-shuffling (and re-seeing recipes) on every page. */
-function mulberry32(seed: number) {
-  let a = seed
-  return function () {
-    a |= 0
-    a = (a + 0x6d2b79f5) | 0
-    let t = Math.imul(a ^ (a >>> 15), 1 | a)
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
-  }
+const FLAG_FIELD: Record<string, 'isVegetarian' | 'isGlutenFree' | 'isDairyFree' | 'isLowCarb'> = {
+  Vegetarian: 'isVegetarian',
+  'Gluten-Free': 'isGlutenFree',
+  'Dairy-Free': 'isDairyFree',
+  'Low Carb': 'isLowCarb',
+}
+const FLAG_INDEX: Record<string, 'by_isVegetarian_shuffleKey' | 'by_isGlutenFree_shuffleKey' | 'by_isDairyFree_shuffleKey' | 'by_isLowCarb_shuffleKey'> = {
+  isVegetarian: 'by_isVegetarian_shuffleKey',
+  isGlutenFree: 'by_isGlutenFree_shuffleKey',
+  isDairyFree: 'by_isDairyFree_shuffleKey',
+  isLowCarb: 'by_isLowCarb_shuffleKey',
 }
 
-function seededShuffle<T>(items: T[], seed: number): T[] {
-  const rng = mulberry32(seed)
-  const arr = items.slice()
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(rng() * (i + 1))
-    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+/** Our own cursor: which underlying indexed stream we're reading from, plus
+ * that stream's own opaque Convex pagination cursor. This lets the Explore
+ * feed start at a random point in the shuffleKey-ordered index (stream 'A':
+ * key >= seed) and, once that runs out, wrap around to the beginning
+ * (stream 'B': key < seed) — a full randomized pass over the table using
+ * only indexed range scans, never a full collect()/shuffle in memory. */
+type Cursor = { stream: 'A' | 'B' | 'search'; inner: string | null }
+
+function decodeCursor(raw: string | null | undefined, hasSearch: boolean): Cursor {
+  if (!raw) return { stream: hasSearch ? 'search' : 'A', inner: null }
+  try {
+    const parsed = JSON.parse(raw)
+    if (parsed && typeof parsed.stream === 'string') return parsed as Cursor
+  } catch {
+    // fall through to default
   }
-  return arr
+  return { stream: hasSearch ? 'search' : 'A', inner: null }
 }
 
-/** Paginated Explore feed: filters by dietary flags / search, then returns
- * a random-but-stable page of `limit` recipes starting at `offset`. The
- * same `seed` always yields the same shuffled order, so the client can
- * page through 10-at-a-time (lazy load) without re-fetching everything or
- * seeing duplicates/skips across pages. */
+/** Paginated Explore feed. No search/filter: indexed random-start circular
+ * scan over `by_shuffleKey`. One dietary filter chip active: same circular
+ * scan over the matching `by_<flag>_shuffleKey` compound index. Free-text
+ * search: Convex search index over `searchBlob` (optionally narrowed by a
+ * dietary flag), paginated by relevance. None of these paths ever load the
+ * whole recipes table into the function. */
 export const list = query({
   args: {
     search: v.optional(v.string()),
     dietaryFlags: v.optional(v.array(v.string())),
     seed: v.number(),
-    offset: v.number(),
-    limit: v.optional(v.number()),
+    cursor: v.optional(v.union(v.string(), v.null())),
+    numItems: v.optional(v.number()),
   },
-  handler: async (ctx, { search, dietaryFlags, seed, offset, limit }) => {
-    const pageSize = limit ?? 10
-    let recipes = await ctx.db.query('recipes').collect()
+  handler: async (ctx, { search, dietaryFlags, seed, cursor, numItems }) => {
+    const pageSize = numItems ?? 10
+    const trimmedSearch = search?.trim().toLowerCase() ?? ''
+    const flagName = dietaryFlags && dietaryFlags.length > 0 ? dietaryFlags[0] : undefined
+    const flagField = flagName ? FLAG_FIELD[flagName] : undefined
 
-    if (dietaryFlags && dietaryFlags.length > 0) {
-      recipes = recipes.filter((r) => dietaryFlags.every((f) => r.dietaryFlags.includes(f)))
+    const state = decodeCursor(cursor, trimmedSearch.length > 0)
+    const paginationOpts = { numItems: pageSize, cursor: state.inner }
+
+    if (trimmedSearch.length > 0) {
+      let searchQuery = ctx.db
+        .query('recipes')
+        .withSearchIndex('search_recipes', (q) => {
+          const base = q.search('searchBlob', trimmedSearch)
+          return flagField ? base.eq(flagField, true) : base
+        })
+      const page = await searchQuery.paginate(paginationOpts)
+      return {
+        items: page.page,
+        hasMore: !page.isDone,
+        cursor: JSON.stringify({ stream: 'search', inner: page.continueCursor } satisfies Cursor),
+      }
     }
 
-    if (search && search.trim().length > 0) {
-      const q = search.trim().toLowerCase()
-      recipes = recipes.filter(
-        (r) =>
-          r.name.toLowerCase().includes(q) ||
-          r.keywords.some((k) => k.toLowerCase().includes(q)) ||
-          r.recipeCategory.toLowerCase().includes(q) ||
-          r.recipeCuisine.toLowerCase().includes(q),
-      )
+    if (flagField) {
+      const indexName = FLAG_INDEX[flagField]
+      if (state.stream === 'B') {
+        const page = await ctx.db
+          .query('recipes')
+          .withIndex(indexName, (q) => q.eq(flagField, true).lt('shuffleKey', seed))
+          .paginate(paginationOpts)
+        return {
+          items: page.page,
+          hasMore: !page.isDone,
+          cursor: JSON.stringify({ stream: 'B', inner: page.continueCursor } satisfies Cursor),
+        }
+      }
+      const page = await ctx.db
+        .query('recipes')
+        .withIndex(indexName, (q) => q.eq(flagField, true).gte('shuffleKey', seed))
+        .paginate(paginationOpts)
+      return {
+        items: page.page,
+        hasMore: true, // even if this stream is done, stream B still remains
+        cursor: JSON.stringify(
+          page.isDone
+            ? { stream: 'B', inner: null }
+            : { stream: 'A', inner: page.continueCursor },
+        ),
+      }
     }
 
-    const shuffled = seededShuffle(recipes, seed)
-    const page = shuffled.slice(offset, offset + pageSize)
-
+    // No search, no filter: circular scan over the full shuffleKey index.
+    if (state.stream === 'B') {
+      const page = await ctx.db
+        .query('recipes')
+        .withIndex('by_shuffleKey', (q) => q.lt('shuffleKey', seed))
+        .paginate(paginationOpts)
+      return {
+        items: page.page,
+        hasMore: !page.isDone,
+        cursor: JSON.stringify({ stream: 'B', inner: page.continueCursor } satisfies Cursor),
+      }
+    }
+    const page = await ctx.db
+      .query('recipes')
+      .withIndex('by_shuffleKey', (q) => q.gte('shuffleKey', seed))
+      .paginate(paginationOpts)
     return {
-      items: page,
-      total: shuffled.length,
-      hasMore: offset + pageSize < shuffled.length,
+      items: page.page,
+      hasMore: true,
+      cursor: JSON.stringify(
+        page.isDone ? { stream: 'B', inner: null } : { stream: 'A', inner: page.continueCursor },
+      ),
     }
   },
 })

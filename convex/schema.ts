@@ -13,7 +13,26 @@ export default defineSchema({
     images: v.array(v.string()),
     keywords: v.array(v.string()),
     dietaryFlags: v.array(v.string()),
-  }).index('by_slug', ['slug']),
+    // Derived/denormalized fields (computed at seed time in convex/seed.ts)
+    // so the Explore feed can use indexed range scans / search instead of
+    // loading and shuffling every recipe on every request.
+    shuffleKey: v.optional(v.number()),
+    isVegetarian: v.optional(v.boolean()),
+    isGlutenFree: v.optional(v.boolean()),
+    isDairyFree: v.optional(v.boolean()),
+    isLowCarb: v.optional(v.boolean()),
+    searchBlob: v.optional(v.string()),
+  })
+    .index('by_slug', ['slug'])
+    .index('by_shuffleKey', ['shuffleKey'])
+    .index('by_isVegetarian_shuffleKey', ['isVegetarian', 'shuffleKey'])
+    .index('by_isGlutenFree_shuffleKey', ['isGlutenFree', 'shuffleKey'])
+    .index('by_isDairyFree_shuffleKey', ['isDairyFree', 'shuffleKey'])
+    .index('by_isLowCarb_shuffleKey', ['isLowCarb', 'shuffleKey'])
+    .searchIndex('search_recipes', {
+      searchField: 'searchBlob',
+      filterFields: ['isVegetarian', 'isGlutenFree', 'isDairyFree', 'isLowCarb'],
+    }),
 
   ingredients: defineTable({
     canonicalName: v.string(),

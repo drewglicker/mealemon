@@ -87,7 +87,17 @@ export const upsertRecipeWithDetails = mutation({
       await ctx.db.delete(existing._id)
     }
 
-    const recipeId = await ctx.db.insert('recipes', recipe)
+    const recipeId = await ctx.db.insert('recipes', {
+      ...recipe,
+      shuffleKey: Math.random(),
+      isVegetarian: recipe.dietaryFlags.includes('Vegetarian'),
+      isGlutenFree: recipe.dietaryFlags.includes('Gluten-Free'),
+      isDairyFree: recipe.dietaryFlags.includes('Dairy-Free'),
+      isLowCarb: recipe.dietaryFlags.includes('Low Carb'),
+      searchBlob: [recipe.name, recipe.recipeCategory, recipe.recipeCuisine, ...recipe.keywords]
+        .join(' ')
+        .toLowerCase(),
+    })
 
     const recipeIngredientIds: Id<'recipeIngredients'>[] = []
     for (const ing of ingredients) {
