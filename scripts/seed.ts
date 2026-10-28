@@ -53,8 +53,11 @@ async function main() {
   const client = new ConvexHttpClient(convexUrl)
 
   const dataDir = join(process.cwd(), 'data')
-  const files = readdirSync(dataDir).filter((f) => f.endsWith('.json'))
-  console.log(`Found ${files.length} recipe file(s) in ${dataDir}`)
+  const filter = process.env.SEED_FILTER
+  const files = readdirSync(dataDir)
+    .filter((f) => f.endsWith('.json'))
+    .filter((f) => !filter || f.includes(filter))
+  console.log(`Found ${files.length} recipe file(s) in ${dataDir}${filter ? ` (filtered by "${filter}")` : ''}`)
 
   const ingredientIdCache = new Map<string, string>() // canonicalName -> Convex Id
 

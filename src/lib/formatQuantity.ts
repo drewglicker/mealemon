@@ -39,7 +39,9 @@ export function formatQuantity(baseQuantity: number, bucket: UnitBucket, unit: s
   if (baseQuantity <= 0) return '0'
 
   if (bucket === 'volume') {
-    if (baseQuantity >= 8) {
+    // Switch to cups once we reach half a cup (4 fl oz) rather than waiting
+    // for a full cup, so e.g. "8 tbsp" renders as the friendlier "1/2 cup".
+    if (baseQuantity >= 4) {
       return `${prettifyFractionString(fractionToString(toFraction(baseQuantity / 8)))} cups`
     }
     if (baseQuantity >= 0.5) {
